@@ -100,20 +100,28 @@ footer{
     padding:20px;
 }
 
-.profile-links{
-    margin-top:15px;
+.profile-icons{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    margin-top:20px;
 }
 
-.profile-links a{
-    color:white;
-    margin:0 10px;
-    text-decoration:none;
+.profile-icons img{
+    width:50px;
+    height:50px;
+    object-fit:contain;
+
+    background:white;
+    padding:8px;
+    border-radius:10px;
+
+    transition:0.3s;
 }
 
-.profile-links a:hover{
-    text-decoration:underline;
+.profile-icons img:hover{
+    transform:scale(1.1);
 }
-
 .metrics-container{
     display:flex;
     gap:20px;
@@ -166,22 +174,30 @@ footer{
 Ir. Ardhymanto Am Tanjung, P.hD
 </p>
 
-<div class="profile-links">
+<div class="profile-icons">
 
-<a href="https://orcid.org/0000-0001-5043-7321" target="_blank">
-ORCID
+<a href="https://orcid.org/0000-0001-5043-7321"
+   target="_blank"
+   title="ORCID Profile">
+
+    <img src="images/orcid-logo.png"
+         alt="ORCID">
 </a>
 
-|
+<a href="https://www.scopus.com/authid/detail.uri?authorId=58616861700"
+   target="_blank"
+   title="Scopus Profile">
 
-<a href="https://www.scopus.com/authid/detail.uri?authorId=58616861700" target="_blank">
-Scopus
+    <img src="images/scopus-logo.png"
+         alt="Scopus">
 </a>
 
-|
+<a href="https://scholar.google.com/citations?user=Dj0n1QwAAAAJ&hl=en&oi=ao"
+   target="_blank"
+   title="Google Scholar Profile">
 
-<a href="https://scholar.google.com/citations?user=Dj0n1QwAAAAJ&hl=en&oi=ao" target="_blank">
-Google Scholar
+    <img src="images/gs-logo.webp"
+         alt="Google Scholar">
 </a>
 
 </div>
