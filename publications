@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Publications | Dr. Ardhymanto Am Tanjung</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    margin:0;
+    line-height:1.6;
+    background:#f5f5f5;
+    color:#333;
+}
+
+header{
+    background:#1f4e79;
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+}
+
+header h1{
+    margin:0;
+}
+
+nav{
+    background:#163a5c;
+    padding:12px;
+    text-align:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:30px 0;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+.filter-box{
+    margin-bottom:20px;
+}
+
+#yearFilter{
+    padding:8px;
+    font-size:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#1f4e79;
+    color:white;
+    padding:12px;
+    text-align:left;
+}
+
+td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+}
+
+tr:nth-child(even){
+    background:#f8f8f8;
+}
+
+tr:hover{
+    background:#eef5fb;
+}
+
+.loading{
+    text-align:center;
+}
+
+footer{
+    margin-top:40px;
+    background:#1f4e79;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.profile-links{
+    margin-top:15px;
+}
+
+.profile-links a{
+    color:white;
+    margin:0 10px;
+    text-decoration:none;
+}
+
+.profile-links a:hover{
+    text-decoration:underline;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Publications</h1>
+
+<p>
+Dr. Ardhymanto Am Tanjung
+</p>
+
+<div class="profile-links">
+
+<a href="https://orcid.org/0000-0001-5043-7321" target="_blank">
+ORCID
+</a>
+
+|
+
+<a href="https://www.scopus.com/authid/detail.uri?authorId=58616861700" target="_blank">
+Scopus
+</a>
+
+|
+
+<a href="https://scholar.google.com/citations?user=Dj0n1QwAAAAJ&hl=en&oi=ao" target="_blank">
+Google Scholar
+</a>
+
+</div>
+
+</header>
+
+<nav>
+
+<a href="index.html">← Back to Profile</a>
+
+</nav>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Publication Database</h2>
+
+<p>
+This page automatically retrieves publications from ORCID.
+</p>
+
+<div class="filter-box">
+
+<label for="yearFilter">
+Filter by Year:
+</label>
+
+<select id="yearFilter">
+<option value="all">All Years</option>
+</select>
+
+</div>
+
+<table>
+
+<thead>
+
+<tr>
+<th width="120">Year</th>
+<th>Publication Title</th>
+</tr>
+
+</thead>
+
+<tbody id="pub-body">
+
+<tr>
+<td colspan="2" class="loading">
+Loading publications...
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<footer>
+
+© 2026 Dr. Ardhymanto Am Tanjung
+
+</footer>
+
+<script>
+
+const orcid = "0000-0001-5043-7321";
+
+fetch(`https://pub.orcid.org/v3.0/${orcid}/works`, {
+    headers:{
+        "Accept":"application/json"
+    }
+})
+
+.then(response => response.json())
+
+.then(data => {
+
+    const tbody =
+        document.getElementById("pub-body");
+
+    const yearFilter =
+        document.getElementById("yearFilter");
+
+    tbody.innerHTML = "";
+
+    let publications = [];
+    let years = new Set();
+
+    if(!data.group || data.group.length === 0){
+
+        tbody.innerHTML =
+        "<tr><td colspan='2'>No publications found.</td></tr>";
+
+        return;
+    }
+
+    data.group.forEach(item => {
+
+        const work =
+            item["work-summary"]?.[0];
+
+        if(!work) return;
+
+        const title =
+            work.title?.title?.value ||
+            "Untitled Publication";
+
+        const year =
+            work["publication-date"]?.year?.value ||
+            "Unknown";
+
+        publications.push({
+            title,
+            year
+        });
+
+        years.add(year);
+
+    });
+
+    publications.sort((a,b)=>
+        parseInt(b.year || 0) -
+        parseInt(a.year || 0)
+    );
+
+    function renderTable(selectedYear){
+
+        tbody.innerHTML = "";
+
+        publications.forEach(pub => {
+
+            if(
+                selectedYear !== "all" &&
+                pub.year !== selectedYear
+            ){
+                return;
+            }
+
+            const row =
+                document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${pub.year}</td>
+                <td>${pub.title}</td>
+            `;
+
+            tbody.appendChild(row);
+
+        });
+
+    }
+
+    [...years]
+        .sort((a,b)=>b-a)
+        .forEach(year=>{
+
+            const option =
+                document.createElement("option");
+
+            option.value = year;
+            option.textContent = year;
+
+            yearFilter.appendChild(option);
+
+        });
+
+    yearFilter.addEventListener(
+        "change",
+        ()=>{
+            renderTable(yearFilter.value);
+        }
+    );
+
+    renderTable("all");
+
+})
+
+.catch(error => {
+
+    document.getElementById("pub-body").innerHTML =
+    "<tr><td colspan='2'>Unable to load publications from ORCID.</td></tr>";
+
+    console.error(error);
+
+});
+
+</script>
+
+</body>
+</html>
