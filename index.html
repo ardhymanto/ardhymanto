@@ -36,7 +36,9 @@ ul{padding-left:20px}
 
 <section id="about">
 <h2>About Me</h2>
-<p>Brief professional biography, research interests, teaching experience, and academic achievements.</p>
+<p>Dr. Ardhymanto A.M. Tanjung is a lecturer and researcher in Mining Engineering at Universitas Negeri Padang.
+His academic interests include mining engineering, Sustainable mine, geotechnical engineering, and mineral resource management.
+He is actively involved in research collaborations, scientific publications, and professional development activities.</p>
 </section>
 
 <section id="education">
@@ -66,11 +68,13 @@ ul{padding-left:20px}
 </section>
 
 <section id="publications">
-<h2>Selected Publications</h2>
-<ul>
-<li>Author, A. (Year). Title of Publication. Journal Name.</li>
-<li>Author, A. (Year). Title of Publication. Conference Name.</li>
-<li>Author, A. (Year). Book Chapter or Article.</li>
+<h2>Publications</h2>
+<p>
+The publication list below is automatically retrieved from ORCID.
+</p>
+
+<ul id="pub-list">
+<li>Loading publications from ORCID...</li>
 </ul>
 </section>
 
@@ -95,15 +99,78 @@ ul{padding-left:20px}
 
 <section id="contact">
 <h2>Contact Information</h2>
-<p>Email: your.email@example.com</p>
-<p>LinkedIn: linkedin.com/in/yourprofile</p>
-<p>ORCID: 0000-0000-0000-0000</p>
+<p>Email: ardhy@ft.unp.ac.id</p>
+<p>LinkedIn: https://www.linkedin.com/in/ardhymanto/?locale=en</p>
+<p>ORCID:
+<a href="https://orcid.org/0000-0001-5043-7321" target="_blank">
+0000-0001-5043-7321
+</a>
+</p>
 <p>Google Scholar: Add Profile Link</p>
+<p>
+Universitas Negeri Padang<br>
+Mining Engineering Department
+</p>
+
 </section>
 
 <footer>
-<p>© 2026 Dr. Your Name. All Rights Reserved.</p>
+<p>© 2026 Ir. Ardhymanto Am Tanjung., P.hD. All Rights Reserved.</p>
 </footer>
+<script>
+const orcid = "0000-0001-5043-7321";
 
+fetch(`https://pub.orcid.org/v3.0/${orcid}/works`, {
+    headers: {
+        "Accept": "application/json"
+    }
+})
+.then(response => response.json())
+.then(data => {
+
+    const list = document.getElementById("pub-list");
+    list.innerHTML = "";
+
+    if (!data.group || data.group.length === 0) {
+        list.innerHTML = "<li>No publications found.</li>";
+        return;
+    }
+
+    data.group.forEach(item => {
+
+        const work =
+            item["work-summary"] &&
+            item["work-summary"][0];
+
+        if (!work) return;
+
+        const title =
+            work.title &&
+            work.title.title &&
+            work.title.title.value
+            ? work.title.title.value
+            : "Untitled Publication";
+
+        const year =
+            work["publication-date"] &&
+            work["publication-date"].year
+            ? work["publication-date"].year.value
+            : "";
+
+        const li = document.createElement("li");
+        li.textContent = `${title} (${year})`;
+
+        list.appendChild(li);
+    });
+
+})
+.catch(error => {
+
+    document.getElementById("pub-list").innerHTML =
+        "<li>Unable to load publications from ORCID.</li>";
+
+    console.error(error);
+});
+</script>
 </body>
 </html>
