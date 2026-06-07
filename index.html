@@ -12,6 +12,17 @@ nav a{color:white;text-decoration:none;margin:0 12px}
 section{padding:40px 10%;border-bottom:1px solid #ddd}
 h2{color:#1f4e79}
 .card{background:#f7f7f7;padding:15px;border-radius:8px;margin:10px 0}
+    .edu-card{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.edu-logo{
+    width:80px;
+    height:80px;
+    object-fit:contain;
+}
 footer{background:#1f4e79;color:white;text-align:center;padding:20px}
 ul{padding-left:20px}
 </style>
@@ -97,22 +108,51 @@ View Profile
 
 <section id="education">
 <h2>Educational Background</h2>
-<div class="card">
-<h3>PhD in Mining Engineering</h3>
-<p>King Abdulaziz University, 2026</p>
+
+<div class="card edu-card">
+    <img src="images/kau-logo.png"
+         alt="King Abdulaziz University"
+         class="edu-logo">
+
+    <div>
+        <h3>PhD in Mining Engineering</h3>
+        <p>King Abdulaziz University, 2026</p>
+    </div>
 </div>
-<div class="card">
-<h3>Engineer Degree</h3>
-<p>Universitas Andalas, 2024</p>
+
+<div class="card edu-card">
+    <img src="images/unand-logo.png"
+         alt="Universitas Andalas"
+         class="edu-logo">
+
+    <div>
+        <h3>Professional Engineer (Ir.)</h3>
+        <p>Universitas Andalas, 2024</p>
+    </div>
 </div>
-<div class="card">
-<h3>Master's Degree in Applied Geosciences of Energy and Mineral Resources</h3>
-<p>RWTH Aachen University, 2020</p>
+
+<div class="card edu-card">
+    <img src="images/rwth-logo.png"
+         alt="RWTH Aachen University"
+         class="edu-logo">
+
+    <div>
+        <h3>M.Sc. Applied Geosciences of Energy and Mineral Resources</h3>
+        <p>RWTH Aachen University, Germany, 2020</p>
+    </div>
 </div>
-<div class="card">
-<h3>Associate and Bachelor's Degree in Mining Engineering</h3>
-<p>Universitas Negeri Padang</p>
+
+<div class="card edu-card">
+    <img src="images/unp-logo.png"
+         alt="Universitas Negeri Padang"
+         class="edu-logo">
+
+    <div>
+        <h3>Associate & Bachelor's Degree in Mining Engineering</h3>
+        <p>Universitas Negeri Padang</p>
+    </div>
 </div>
+
 </section>
 
 <section id="research">
