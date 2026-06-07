@@ -114,6 +114,44 @@ footer{
     text-decoration:underline;
 }
 
+.metrics-container{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+.metric-card{
+    flex:1;
+    min-width:180px;
+    background:#1f4e79;
+    color:white;
+    text-align:center;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.15);
+}
+
+.metric-card h3{
+    margin:0;
+    font-size:16px;
+    font-weight:normal;
+}
+
+.metric-card p{
+    margin:10px 0 0;
+    font-size:32px;
+    font-weight:bold;
+}
+
+.last-update{
+    text-align:right;
+    color:#666;
+    font-size:14px;
+    margin-bottom:25px;
+    font-style:italic;
+}
+    
 </style>
 
 </head>
@@ -165,6 +203,34 @@ Google Scholar
 <p>
 This page automatically retrieves publications from ORCID.
 </p>
+
+<div class="metrics-container">
+
+    <div class="metric-card">
+        <h3>Citations</h3>
+        <p>XXX</p>
+    </div>
+
+    <div class="metric-card">
+        <h3>h-index</h3>
+        <p>XX</p>
+    </div>
+
+    <div class="metric-card">
+        <h3>i10-index</h3>
+        <p>XX</p>
+    </div>
+
+    <div class="metric-card">
+        <h3>Publications</h3>
+        <p>XX</p>
+    </div>
+
+</div>
+
+<div class="last-update">
+    Last updated: 07 June 2026
+</div>
 
 <div class="filter-box">
 
