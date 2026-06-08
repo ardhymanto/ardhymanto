@@ -180,7 +180,7 @@ tr:hover{
     color: #555;
 }
 
-/* Styled URL/Link Badge badge */
+/* Styled URL/Link Badge */
 .view-link {
     display: inline-flex;
     align-items: center;
@@ -464,6 +464,7 @@ footer{
 
 <h2>Publication Database</h2>
 
+                    <!-- SINTA 3 Profile Card -->
                     <div class="sinta-profile">
                         <h3>ARDHYMANTO AM TANJUNG</h3>
                         <div class="sinta-id">
@@ -523,13 +524,17 @@ footer{
                         </div>
                     </div>
 
+                    <!-- SINTA IPR Content -->
                     <div id="sinta-ipr-content" class="ipr-section">
                         <div class="ipr-note">View full IPR details: <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6775330/?view=iprs" target="_blank" rel="noopener">SINTA IPR Page</a></div>
                     </div>
-                    <div class="publications-intro">
+                    <!-- END SINTA IPR Content -->
+
+<div class="publications-intro">
     This page automatically retrieves and renders publications directly from our live Google Sheets database.
 </div>
 
+<!-- Combined Dynamic Controls Box -->
 <div class="filter-container">
     <div class="search-box">
         <input type="text" id="pubSearch" placeholder="Search by title, authors, journal, or keywords...">
@@ -542,11 +547,13 @@ footer{
     </div>
 </div>
 
+<!-- Visual Statistics Counter -->
 <div id="pub-count" class="pub-count"></div>
 
 <table>
     <thead>
-        </thead>
+        <!-- Headers are dynamically populated based on your actual Google Sheet columns -->
+    </thead>
     <tbody id="pub-body">
         <tr>
             <td class="loading">Loading publications from Google Sheets database...</td>
@@ -600,6 +607,23 @@ function parseCSV(text) {
     }
     if (row.length > 1 || row[0] !== '') lines.push(row);
     return lines;
+}
+
+// Function to escape HTML to prevent XSS issues while modifying specific content strings
+function escapeHTML(str) {
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+}
+
+// Target Name Bold Highlighter Function (Case Insensitive Matching)
+function highlightAuthorName(text) {
+    const targetName = "Ardhymanto Am Tanjung";
+    if (!text) return '—';
+    
+    // Creates a safe escape query regex match pattern
+    const regex = new RegExp(`(${targetName.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+    
+    // Escapes common HTML syntax errors first, then inserts structural highlight bold text wrapper tags
+    return escapeHTML(text).replace(regex, '<strong>$1</strong>');
 }
 
 // Fetch and stream data asynchronously
@@ -755,10 +779,12 @@ function renderTable() {
             // Wrap the Title value as a clean hyperlink if a Link column metadata exists
             else if (idx === titleIdx && pub.link) {
                 let cleanUrl = pub.link.startsWith('http') ? pub.link : 'https://' + pub.link;
-                td.innerHTML = `<a href="${cleanUrl}" target="_blank" style="color: #012a50; font-weight: 600; text-decoration: none; border-bottom: 1px dashed #ccc;">${cellText}</a>`;
+                // Applies the dynamic highlight logic here inside your title if your name is written in it
+                td.innerHTML = `<a href="${cleanUrl}" target="_blank" style="color: #012a50; font-weight: 600; text-decoration: none; border-bottom: 1px dashed #ccc;">${highlightAuthorName(cellText)}</a>`;
             }
             else {
-                td.textContent = cellText || '—';
+                // Processes name string bolding for normal content columns (like an 'Authors' column)
+                td.innerHTML = highlightAuthorName(cellText);
             }
             row.appendChild(td);
         });
