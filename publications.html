@@ -216,6 +216,47 @@ footer{
     padding:20px;
 }
 
+.metrics-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.metric-card{
+    background:#e9eff8;
+    color:#12314e;
+    padding:16px;
+    border-radius:12px;
+    text-align:center;
+    border-top:3px solid #12314e;
+    transition:all 0.3s ease;
+    text-decoration:none;
+    display:block;
+    cursor:pointer;
+}
+
+.metric-card:hover{
+    box-shadow:0 4px 12px rgba(18, 49, 78, 0.15);
+    transform:translateY(-2px);
+}
+
+.metric-card h3{
+    margin:0;
+    font-size:0.8rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    opacity:.8;
+}
+
+.metric-card p{
+    margin:10px 0 0;
+    font-size:2rem;
+    font-weight:bold;
+    color:#020481;
+}
+
 .sinta-profile{
     background:white;
     padding:24px;
@@ -303,57 +344,6 @@ footer{
     color:#020481;
 }
 
-/* Redesigned Compact Style for Index Matrices (Matching SINTA exactly) */
-.index-matrices-section {
-    margin-top: 1.5rem;
-}
-
-.index-matrices-title {
-    margin-bottom: 0.6rem;
-    font-weight: 600;
-    color: #12314e;
-}
-
-.index-matrices-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 12px;
-}
-
-.index-metric-card {
-    background: #e9eff8;
-    color: #12314e;
-    padding: 16px;
-    border-radius: 12px;
-    text-align: center;
-    border-top: 3px solid #12314e;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: block;
-}
-
-.index-metric-card:hover {
-    box-shadow: 0 4px 12px rgba(18, 49, 78, 0.15);
-    transform: translateY(-2px);
-}
-
-.index-metric-card h3 {
-    margin: 0;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    opacity: .8;
-    line-height: 1.2;
-}
-
-.index-metric-card p {
-    margin: 10px 0 0;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #020481;
-}
-
 .sinta-link{
     display:inline-block;
     margin-top:1.5rem;
@@ -375,4 +365,433 @@ footer{
 .last-update{
     font-size:0.85rem;
     color:#666;
-    margin-top
+    margin-top:16px;
+    padding-top:12px;
+    border-top:1px solid #e0e0e0;
+}
+
+.ipr-section{
+    background:#f9fbfd;
+    padding:20px;
+    border-radius:12px;
+    border-left:4px solid #20c997;
+    margin-top:1.5rem;
+}
+
+.ipr-note{
+    font-size:0.95rem;
+    color:#555;
+    margin-top:8px;
+}
+
+.ipr-note a{
+    color:#12314e;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.ipr-note a:hover{
+    text-decoration:underline;
+}
+
+.publications-intro{
+    background:#e8f4f8;
+    padding:15px 20px;
+    border-radius:8px;
+    margin:20px 0;
+    border-left:4px solid #12314e;
+    color:#333;
+    font-size:0.95rem;
+}
+
+@media (max-width: 768px) {
+    header{
+        flex-direction:column;
+        text-align:center;
+    }
+    
+    header h1{
+        margin-bottom:15px;
+    }
+    
+    .header-icons{
+        justify-content:center;
+    }
+    
+    .sinta-metrics{
+        grid-template-columns:repeat(auto-fit, minmax(100px, 1fr));
+    }
+    
+    .metrics-container{
+        grid-template-columns:repeat(auto-fit, minmax(100px, 1fr));
+    }
+    
+    .metric-item .metric-value{
+        font-size:1.5rem;
+    }
+    
+    .metric-card p{
+        font-size:1.5rem;
+    }
+    
+    .sinta-profile h3{
+        font-size:1.4rem;
+    }
+
+    .filter-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>PUBLICATIONS</h1>
+    <div class="header-icons">
+        <a href="https://orcid.org/0000-0001-5043-7321"
+           target="_blank"
+           title="ORCID Profile">
+            <img src="images/orcid-logo.png" alt="ORCID">
+        </a>
+    </div>
+</header>
+
+<nav>
+    <a href="index.html">← Back to Profile</a>
+</nav>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Publication Database</h2>
+
+                    <div class="sinta-profile">
+                        <h3>ARDHYMANTO AM TANJUNG</h3>
+                        <div class="sinta-id">
+                            <strong>SINTA ID:</strong> 6775330 <span style="opacity: 0.7; font-size: 0.85rem;">(Updated: 2026-06-08)</span>
+                        </div>
+                        <div class="sinta-affiliation">
+                            <strong>Affiliation:</strong> Universitas Negeri Padang
+                        </div>
+                        
+                        <div class="sinta-metrics">
+                            <div class="metric-item">
+                                <div class="metric-label">SINTA Score</div>
+                                <div class="metric-value">194</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">SINTA Score (3Yr)</div>
+                                <div class="metric-value">152</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">Articles</div>
+                                <div class="metric-value">7</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">Citations</div>
+                                <div class="metric-value">13</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">H-Index</div>
+                                <div class="metric-value">2</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">i10-Index</div>
+                                <div class="metric-value">0</div>
+                            </div>
+                        </div>
+                        
+                        <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6775330" target="_blank" class="sinta-link">View Full SINTA Profile →</a>
+
+                        <p style="margin-top: 1.5rem; font-weight: 600; color: #12314e;">Index Matrices</p>
+                        <div class="metrics-container">
+                            <a href="https://scholar.google.com/citations?user=Dj0n1QwAAAAJ&hl=en&oi=ao" target="_blank" class="metric-card">
+                                <h3>GoogleScholar (H-index)</h3>
+                                <p>3</p>
+                            </a>
+                            <a href="https://www.webofscience.com/wos/author/record/AHC-8278-2022" target="_blank" class="metric-card">
+                                <h3>WOS (Impact Factor)</h3>
+                                <p>1</p>
+                            </a>
+                            <a href="https://www.scopus.com/authid/detail.uri?authorId=58616861700" target="_blank" class="metric-card">
+                                <h3>Scopus (H-index)</h3>
+                                <p>2</p>
+                            </a>
+                        </div>
+
+                        <div class="last-update">
+                            Last updated: 07 June 2026
+                        </div>
+                    </div>
+
+                    <div id="sinta-ipr-content" class="ipr-section">
+                        <div class="ipr-note">View full IPR details: <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6775330/?view=iprs" target="_blank" rel="noopener">SINTA IPR Page</a></div>
+                    </div>
+                    <div class="publications-intro">
+    This page automatically retrieves and renders publications directly from our live Google Sheets database.
+</div>
+
+<div class="filter-container">
+    <div class="search-box">
+        <input type="text" id="pubSearch" placeholder="Search by title, authors, journal, or keywords...">
+    </div>
+    <div class="filter-box">
+        <label for="yearFilter">Filter by Year:</label>
+        <select id="yearFilter">
+            <option value="all">All Years</option>
+        </select>
+    </div>
+</div>
+
+<div id="pub-count" class="pub-count"></div>
+
+<table>
+    <thead>
+        </thead>
+    <tbody id="pub-body">
+        <tr>
+            <td class="loading">Loading publications from Google Sheets database...</td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
+
+</div>
+
+<footer>
+
+© 2026 Ardhymanto Am Tanjung
+
+</footer>
+
+<script>
+// Live export URL using your Spreadsheet ID 
+const sheetUrl = "https://docs.google.com/spreadsheets/d/1JvpZbjUVnEGLiT_LSDSzjdbF7BRApC6jxpvDq73HO7E/export?format=csv";
+
+let allPublications = [];
+let headers = [];
+let currentSort = { columnIndex: null, direction: 'desc' };
+
+const tbody = document.getElementById("pub-body");
+const yearFilter = document.getElementById("yearFilter");
+const searchInput = document.getElementById("pubSearch");
+const countContainer = document.getElementById("pub-count");
+
+// Robust RFC 4180 Standard CSV Client-side Parser
+function parseCSV(text) {
+    let lines = [];
+    let row = [""];
+    let inQuotes = false;
+    for (let i = 0; i < text.length; i++) {
+        let c = text[i];
+        let next = text[i+1];
+        if (c === '"') {
+            if (inQuotes && next === '"') { row[row.length - 1] += '"'; i++; }
+            else { inQuotes = !inQuotes; }
+        } else if (c === ',' && !inQuotes) {
+            row.push('');
+        } else if ((c === '\r' || c === '\n') && !inQuotes) {
+            if (c === '\r' && next === '\n') { i++; }
+            lines.push(row);
+            row = [''];
+        } else {
+            row[row.length - 1] += c;
+        }
+    }
+    if (row.length > 1 || row[0] !== '') lines.push(row);
+    return lines;
+}
+
+// Function to escape HTML safely
+function escapeHTML(str) {
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+}
+
+// Target Name Bold Highlighter Function (Case Insensitive Matching)
+function highlightAuthorName(text) {
+    const targetName = "Ardhymanto Am Tanjung";
+    if (!text) return '—';
+    
+    const regex = new RegExp(`(${targetName.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+    return escapeHTML(text).replace(regex, '<strong>$1</strong>');
+}
+
+// Fetch and stream data asynchronously
+fetch(sheetUrl)
+    .then(response => response.text())
+    .then(csvText => {
+        const data = parseCSV(csvText);
+        if (!data || data.length < 2) {
+            tbody.innerHTML = "<tr><td class='loading'>No records found inside the spreadsheet.</td></tr>";
+            return;
+        }
+
+        // Capture live header items dynamically
+        headers = data[0].map(h => h.trim());
+
+        // Automatically map internal key indexes for responsive sorting/hyperlinking
+        const yearIdx = headers.findIndex(h => h.toLowerCase().includes('year'));
+        const titleIdx = headers.findIndex(h => h.toLowerCase().includes('title'));
+        const linkIdx = headers.findIndex(h => h.toLowerCase().includes('link') || h.toLowerCase().includes('url') || h.toLowerCase().includes('doi'));
+
+        // Parse matrix structure
+        allPublications = data.slice(1)
+            .filter(row => row.some(cell => cell.trim() !== '')) // Drop empty rows
+            .map(row => {
+                while (row.length < headers.length) row.push(''); // Fill gaps if incomplete rows
+                return {
+                    cells: row.map(cell => cell.trim()),
+                    year: yearIdx !== -1 ? row[yearIdx].trim() : '',
+                    title: titleIdx !== -1 ? row[titleIdx].trim() : '',
+                    link: linkIdx !== -1 ? row[linkIdx].trim() : '',
+                    searchString: row.join(' ').toLowerCase() // Prepared index for fast global search
+                };
+            });
+
+        // Default auto-sorting configuration on page load
+        if (yearIdx !== -1) {
+            currentSort = { columnIndex: yearIdx, direction: 'desc' };
+        } else {
+            currentSort = { columnIndex: 0, direction: 'asc' };
+        }
+
+        populateYearFilter(yearIdx);
+        setupEventListeners();
+        renderTable();
+    })
+    .catch(error => {
+        tbody.innerHTML = "<tr><td class='loading' style='color:red;'>Unable to pull data from Google Sheets. Ensure file permissions are set to Public.</td></tr>";
+        console.error(error);
+    });
+
+function populateYearFilter(yearIdx) {
+    if (yearIdx === -1) return;
+    const years = new Set();
+    allPublications.forEach(pub => {
+        if (pub.year) years.add(pub.year);
+    });
+
+    const sortedYears = Array.from(years).sort((a, b) => b - a);
+    sortedYears.forEach(year => {
+        const option = document.createElement("option");
+        option.value = year;
+        option.textContent = year;
+        yearFilter.appendChild(option);
+    });
+}
+
+function setupEventListeners() {
+    yearFilter.addEventListener("change", renderTable);
+    searchInput.addEventListener("input", renderTable);
+}
+
+function handleSort(columnIndex) {
+    if (currentSort.columnIndex === columnIndex) {
+        currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+    } else {
+        currentSort.columnIndex = columnIndex;
+        currentSort.direction = 'desc'; // default to high-to-low on click
+    }
+    renderTable();
+}
+
+function getSortIcon(columnIndex) {
+    if (currentSort.columnIndex !== columnIndex) return '↕';
+    return currentSort.direction === 'asc' ? '▲' : '▼';
+}
+
+function renderTable() {
+    const selectedYear = yearFilter.value;
+    const searchText = searchInput.value.toLowerCase().trim();
+
+    // 1. Process Filters
+    let filteredData = allPublications.filter(pub => {
+        const matchesYear = (selectedYear === "all" || pub.year === selectedYear);
+        const matchesSearch = (!searchText || pub.searchString.includes(searchText));
+        return matchesYear && matchesSearch;
+    });
+
+    // 2. Process Sorting Rules
+    if (currentSort.columnIndex !== null) {
+        const idx = currentSort.columnIndex;
+        const dir = currentSort.direction === 'asc' ? 1 : -1;
+
+        filteredData.sort((a, b) => {
+            const valA = a.cells[idx] || '';
+            const valB = b.cells[idx] || '';
+            
+            if (!isNaN(valA) && !isNaN(valB) && valA !== '' && valB !== '') {
+                return (Number(valA) - Number(valB)) * dir;
+            }
+            return valA.localeCompare(valB, undefined, { numeric: true, sensitivity: 'base' }) * dir;
+        });
+    }
+
+    // Update Counter Dashboard
+    countContainer.textContent = `Showing ${filteredData.length} of ${allPublications.length} publications`;
+
+    // 3. Mount Table Headers Layout
+    const thead = document.querySelector("table thead");
+    thead.innerHTML = "";
+    const headerRow = document.createElement("tr");
+    headers.forEach((header, index) => {
+        const th = document.createElement("th");
+        th.className = "sortable";
+        th.style.cursor = "pointer";
+        th.innerHTML = `${header} <span class="sort-icon">${getSortIcon(index)}</span>`;
+        th.addEventListener("click", () => handleSort(index));
+        headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+
+    // 4. Mount Table Body Layout
+    tbody.innerHTML = "";
+    if (filteredData.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="${headers.length || 2}" style="text-align:center; padding: 20px; color:#777;">No matches found matching your filters.</td></tr>`;
+        return;
+    }
+
+    const linkIdx = headers.findIndex(h => h.toLowerCase().includes('link') || h.toLowerCase().includes('url') || h.toLowerCase().includes('doi'));
+    const titleIdx = headers.findIndex(h => h.toLowerCase().includes('title'));
+    const qSintaIdx = headers.findIndex(h => h.toLowerCase() === 'q/sinta');
+
+    filteredData.forEach(pub => {
+        const row = document.createElement("tr");
+        
+        pub.cells.forEach((cellText, idx) => {
+            const td = document.createElement("td");
+            
+            // CRITICAL CHECK: If it's the Q/SINTA column, bypass text escaping to render raw HTML/images
+            if (idx === qSintaIdx) {
+                td.innerHTML = cellText || '—';
+            }
+            // Clean-up view layer if a raw URL column is fed
+            else if (idx === linkIdx && cellText) {
+                let cleanUrl = cellText.startsWith('http') ? cellText : 'https://' + cellText;
+                td.innerHTML = `<a href="${cleanUrl}" target="_blank" class="view-link">🔗 View Article</a>`;
+            } 
+            // Wrap the Title value as a clean hyperlink if a Link column metadata exists
+            else if (idx === titleIdx && pub.link) {
+                let cleanUrl = pub.link.startsWith('http') ? pub.link : 'https://' + pub.link;
+                td.innerHTML = `<a href="${cleanUrl}" target="_blank" style="color: #012a50; font-weight: 600; text-decoration: none; border-bottom: 1px dashed #ccc;">${highlightAuthorName(cellText)}</a>`;
+            }
+            else {
+                td.innerHTML = highlightAuthorName(cellText);
+            }
+            row.appendChild(td);
+        });
+        
+        tbody.appendChild(row);
+    });
+}
+</script>
+
+</body>
+</html>
