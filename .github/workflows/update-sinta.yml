@@ -1,7 +1,5 @@
 name: Update SINTA Profile
 
-name: Update SINTA Profile
-
 on:
   workflow_dispatch:
     inputs:
