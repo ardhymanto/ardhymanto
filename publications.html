@@ -216,47 +216,6 @@ footer{
     padding:20px;
 }
 
-.metrics-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
-    gap:12px;
-    margin-bottom:20px;
-}
-
-.metric-card{
-    background:#e9eff8;
-    color:#12314e;
-    padding:16px;
-    border-radius:12px;
-    text-align:center;
-    border-top:3px solid #12314e;
-    transition:all 0.3s ease;
-    text-decoration:none;
-    display:block;
-    cursor:pointer;
-}
-
-.metric-card:hover{
-    box-shadow:0 4px 12px rgba(18, 49, 78, 0.15);
-    transform:translateY(-2px);
-}
-
-.metric-card h3{
-    margin:0;
-    font-size:0.8rem;
-    font-weight:600;
-    text-transform:uppercase;
-    letter-spacing:0.04em;
-    opacity:.8;
-}
-
-.metric-card p{
-    margin:10px 0 0;
-    font-size:2rem;
-    font-weight:bold;
-    color:#020481;
-}
-
 .sinta-profile{
     background:white;
     padding:24px;
@@ -344,6 +303,57 @@ footer{
     color:#020481;
 }
 
+/* Redesigned Compact Style for Index Matrices (Matching SINTA exactly) */
+.index-matrices-section {
+    margin-top: 1.5rem;
+}
+
+.index-matrices-title {
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    color: #12314e;
+}
+
+.index-matrices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.index-metric-card {
+    background: #e9eff8;
+    color: #12314e;
+    padding: 16px;
+    border-radius: 12px;
+    text-align: center;
+    border-top: 3px solid #12314e;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+}
+
+.index-metric-card:hover {
+    box-shadow: 0 4px 12px rgba(18, 49, 78, 0.15);
+    transform: translateY(-2px);
+}
+
+.index-metric-card h3 {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    opacity: .8;
+    line-height: 1.2;
+}
+
+.index-metric-card p {
+    margin: 10px 0 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #020481;
+}
+
 .sinta-link{
     display:inline-block;
     margin-top:1.5rem;
@@ -422,7 +432,7 @@ footer{
         grid-template-columns:repeat(auto-fit, minmax(100px, 1fr));
     }
     
-    .metrics-container{
+    .index-matrices-grid{
         grid-template-columns:repeat(auto-fit, minmax(100px, 1fr));
     }
     
@@ -430,7 +440,7 @@ footer{
         font-size:1.5rem;
     }
     
-    .metric-card p{
+    .index-metric-card p{
         font-size:1.5rem;
     }
     
@@ -509,20 +519,22 @@ footer{
                         
                         <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6775330" target="_blank" class="sinta-link">View Full SINTA Profile →</a>
 
-                        <p style="margin-top: 1.5rem; font-weight: 600; color: #12314e;">Index Matrices</p>
-                        <div class="metrics-container">
-                            <a href="https://scholar.google.com/citations?user=Dj0n1QwAAAAJ&hl=en&oi=ao" target="_blank" class="metric-card">
-                                <h3>GoogleScholar (H-index)</h3>
-                                <p>3</p>
-                            </a>
-                            <a href="https://www.webofscience.com/wos/author/record/AHC-8278-2022" target="_blank" class="metric-card">
-                                <h3>WOS (Impact Factor)</h3>
-                                <p>1</p>
-                            </a>
-                            <a href="https://www.scopus.com/authid/detail.uri?authorId=58616861700" target="_blank" class="metric-card">
-                                <h3>Scopus (H-index)</h3>
-                                <p>2</p>
-                            </a>
+                        <div class="index-matrices-section">
+                            <p class="index-matrices-title">Index Matrices</p>
+                            <div class="index-matrices-grid">
+                                <a href="https://scholar.google.com/citations?user=Dj0n1QwAAAAJ&hl=en&oi=ao" target="_blank" class="index-metric-card">
+                                    <h3>GoogleScholar<br>(H-index)</h3>
+                                    <p>3</p>
+                                </a>
+                                <a href="https://www.webofscience.com/wos/author/record/AHC-8278-2022" target="_blank" class="index-metric-card">
+                                    <h3>WOS<br>(Impact Factor)</h3>
+                                    <p>1</p>
+                                </a>
+                                <a href="https://www.scopus.com/authid/detail.uri?authorId=58616861700" target="_blank" class="index-metric-card">
+                                    <h3>Scopus<br>(H-index)</h3>
+                                    <p>2</p>
+                                </a>
+                            </div>
                         </div>
 
                         <div class="last-update">
