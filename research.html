@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research & Community Development</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: block;
+        }
+        .main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 1rem;
+            height: fit-content;
+        }
+        .sidebar h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: #2c3e50;
+        }
+        .ongoing-list {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+        .ongoing-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        .ongoing-item:last-child { border-bottom: none; }
+        .ongoing-title { font-weight: 700; color: #34495e; }
+        .ongoing-summary { color: #555; font-size: 0.95rem; }
+        .section {
+            background: white;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .section-header {
+            background-color: #34495e;
+            color: white;
+            padding: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .section-content {
+            padding: 2rem;
+        }
+        .project-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        .project-item:last-child {
+            border-bottom: none;
+        }
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        .project-status {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .status-ongoing {
+            background-color: #3498db;
+            color: white;
+        }
+        .project-description {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+        .project-photos {
+            margin: 1.5rem 0;
+        }
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .photo-item {
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .photo-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        .photo-caption {
+            padding: 0.8rem;
+            background-color: #f9f9f9;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .links {
+            margin-top: 1rem;
+        }
+        .links-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        .link-item {
+            display: inline-block;
+            margin-right: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .link-item a {
+            color: #3498db;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid #3498db;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .link-item a:hover {
+            background-color: #3498db;
+            color: white;
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ecf0f1;
+            margin-bottom: 0;
+        }
+        .tab-btn {
+            padding: 1rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .tab-btn:hover {
+            color: #2c3e50;
+        }
+        .tab-btn.active {
+            color: #3498db;
+            border-bottom-color: #3498db;
+        }
+        .tab-content {
+            display: none;
+            padding: 2rem;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .sinta-profile {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .sinta-profile h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        .sinta-affiliation {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            margin-bottom: 1rem;
+        }
+        .sinta-affiliation a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+        }
+        .sinta-affiliation a:hover {
+            border-bottom-color: #fff;
+        }
+        .sinta-id {
+            font-size: 0.85rem;
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+        }
+        .sinta-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .metric-item {
+            background: rgba(255,255,255,0.15);
+            padding: 1rem;
+            border-radius: 6px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .metric-label {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .sinta-score {
+            background: rgba(255,255,255,0.15);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+        .sinta-score-title {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+        }
+        .score-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        .score-item {
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .score-item strong {
+            font-weight: 700;
+        }
+        .sinta-subjects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .subject-tag {
+            background: rgba(255,255,255,0.25);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            backdrop-filter: blur(10px);
+        }
+        .sinta-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1.2rem;
+            background: rgba(255,255,255,0.25);
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 4px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        .sinta-link:hover {
+            background: rgba(255,255,255,0.35);
+            border-color: #fff;
+        }
+        .ipr-section {
+            background: #f7f9fc;
+            border: 1px solid #dce3eb;
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+        }
+        .ipr-entry {
+            margin-bottom: 1.2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e5ebf2;
+        }
+        .ipr-entry:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .ipr-entry-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.4rem;
+        }
+        .ipr-entry-detail {
+            color: #566371;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .ipr-note {
+            margin-top: 1.2rem;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Research & Community Development</h1>
+        <p class="subtitle">Advancing Knowledge and Community Growth</p>
+    </header>
+
+    <div class="container">
+        <!-- Tabbed Sections (Elementor-like) -->
+        <div class="section">
+            <div class="tabs" role="tablist" aria-label="Sections Tabs">
+                <button class="tab-btn active" data-tab="tab-research" role="tab" aria-selected="true">📚 Research</button>
+                <button class="tab-btn" data-tab="tab-community" role="tab" aria-selected="false">🤝 Community</button>
+                <button class="tab-btn" data-tab="tab-ipr" role="tab" aria-selected="false">🛡️ IPR</button>
+                <button class="tab-btn" data-tab="tab-ongoing" role="tab" aria-selected="false">🚀 On Going</button>
+            </div>
+            <div class="tab-content active" id="tab-research" role="tabpanel">
+                <div class="section-header">📚 Research</div>
+                <div class="section-content">
+                    <!-- keep existing research content -->
+                    <div class="project-item">
+                        <div class="project-title">Research Project Title</div>
+                        <span class="project-status status-ongoing">On Going</span>
+                        <p class="project-description">Description of your research project goes here. Include the objectives, scope, and significance of the research.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="tab-community" role="tabpanel">
+                <div class="section-header">🤝 Community Services</div>
+                <div class="section-content">
+                    <div class="project-item">
+                        <div class="project-title">Community Project 1</div>
+                        <span class="project-status status-ongoing">On Going</span>
+                        <p class="project-description">Description of your community development project. Include the goals, target community, and expected outcomes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="tab-ongoing" role="tabpanel">
+                <div class="section-header">🚀 On Going Projects</div>
+                <div class="section-content">
+                    <div class="project-item">
+                        <div class="project-title">Project Name</div>
+                        <span class="project-status status-ongoing">On Going</span>
+                        <p class="project-description">Ongoing project description with current status and progress.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="tab-ipr" role="tabpanel">
+                <div class="section-header">🛡️ Intellectual Property Rights (IPR)</div>
+                <div class="section-content">
+                    <!-- SINTA IPR Content -->
+                    <div id="sinta-ipr-content" class="ipr-section">
+                        <div class="ipr-entry">
+                            <div class="ipr-entry-title">IPR data will be loaded from your SINTA IPR page.</div>
+                            <div class="ipr-entry-detail">This section is updated monthly from your SINTA profile IPR view: <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6775330/?view=iprs" target="_blank" rel="noopener">View SINTA IPR page</a>.</div>
+                        </div>
+                        <div class="ipr-note">If the SINTA page includes patents, copyrights, or other registered IPR items, they will appear here after the next update.</div>
+                    </div>
+                    <!-- END SINTA IPR Content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Research & Community Development. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Remove active class from all buttons and contents
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                this.classList.add('active');
+                this.setAttribute('aria-selected', 'true');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
