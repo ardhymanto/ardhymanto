@@ -41,7 +41,7 @@ def fetch_sinta_profile():
             print(f"Fetching SINTA profile from {SINTA_URL}... (Attempt {attempt + 1}/{max_retries})")
             
             headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
             }
             
             response = requests.get(SINTA_URL, timeout=30, headers=headers)
@@ -49,7 +49,7 @@ def fetch_sinta_profile():
             
             soup = BeautifulSoup(response.text, 'html.parser')
             
-            # Extract profile information
+            # Extract profile information using correct selectors
             profile_data = extract_profile_data(soup)
             
             if profile_data:
@@ -73,48 +73,73 @@ def fetch_sinta_profile():
                 return None
 
 def extract_profile_data(soup):
-    """Extract profile data from BeautifulSoup object"""
+    """Extract profile data from BeautifulSoup object using correct CSS selectors"""
     try:
         data = {}
         
-        # Try to extract name
-        name_elem = soup.find('h1', class_='profile-name') or soup.find('h1')
+        # Extract name from h3
+        name_elem = soup.find('h3')
         data['name'] = name_elem.get_text(strip=True) if name_elem else 'N/A'
+        print(f"  Name: {data['name']}")
         
-        # Try to extract affiliation
-        affiliation_elem = soup.find('div', class_='affiliation') or soup.find('span', class_='affiliation')
-        data['affiliation'] = affiliation_elem.get_text(strip=True) if affiliation_elem else 'N/A'
+        # Extract affiliation and department from meta-profile
+        meta_profile = soup.find('div', class_='meta-profile')
+        if meta_profile:
+            meta_text = meta_profile.get_text(strip=True)
+            lines = [line.strip() for line in meta_text.split('\n') if line.strip()]
+            data['affiliation'] = lines[0] if len(lines) > 0 else 'N/A'
+            data['department'] = lines[1] if len(lines) > 1 else 'N/A'
+            print(f"  Affiliation: {data['affiliation']}")
+            print(f"  Department: {data['department']}")
+        else:
+            data['affiliation'] = 'N/A'
+            data['department'] = 'N/A'
         
-        # Extract metrics from the page
+        # Extract SINTA score metrics from stat-profile
         metrics = {}
+        stat_profile = soup.find('div', class_='stat-profile')
+        if stat_profile:
+            # Find all metric items (pr-num and pr-txt pairs)
+            metric_items = stat_profile.find_all('div', class_='col-4')
+            for i, item in enumerate(metric_items):
+                num_elem = item.find('div', class_='pr-num')
+                txt_elem = item.find('div', class_='pr-txt')
+                
+                if num_elem and txt_elem:
+                    value = num_elem.get_text(strip=True)
+                    label = txt_elem.get_text(strip=True)
+                    metrics[label] = value
+                    print(f"  {label}: {value}")
         
-        # Look for h-index
-        h_index_elem = soup.find(string=re.compile(r'H-Index', re.I))
-        if h_index_elem:
-            parent = h_index_elem.parent
-            value = parent.find_next(class_='metric-value')
-            metrics['h_index'] = value.get_text(strip=True) if value else '0'
-        
-        # Look for i10-index
-        i10_elem = soup.find(string=re.compile(r'i10-Index', re.I))
-        if i10_elem:
-            parent = i10_elem.parent
-            value = parent.find_next(class_='metric-value')
-            metrics['i10_index'] = value.get_text(strip=True) if value else '0'
-        
-        # Look for articles count
-        articles_elem = soup.find(string=re.compile(r'Articles', re.I))
-        if articles_elem:
-            parent = articles_elem.parent
-            value = parent.find_next(class_='metric-value')
-            metrics['articles'] = value.get_text(strip=True) if value else '0'
-        
-        # Look for citations
-        citations_elem = soup.find(string=re.compile(r'Citations', re.I))
-        if citations_elem:
-            parent = citations_elem.parent
-            value = parent.find_next(class_='metric-value')
-            metrics['citations'] = value.get_text(strip=True) if value else '0'
+        # Extract additional metrics from side-content
+        side_content = soup.find('div', class_='side-content')
+        if side_content:
+            # Look for specific metric labels
+            text = side_content.get_text()
+            
+            # Extract H-Index
+            h_index_match = re.search(r'H-Index\s*(\d+)', text, re.IGNORECASE)
+            if h_index_match:
+                metrics['H-Index'] = h_index_match.group(1)
+                print(f"  H-Index: {metrics['H-Index']}")
+            
+            # Extract i10-Index
+            i10_match = re.search(r'i10-Index\s*(\d+)', text, re.IGNORECASE)
+            if i10_match:
+                metrics['i10-Index'] = i10_match.group(1)
+                print(f"  i10-Index: {metrics['i10-Index']}")
+            
+            # Extract Citations
+            citation_match = re.search(r'Citation\s*(\d+)', text, re.IGNORECASE)
+            if citation_match:
+                metrics['Citations'] = citation_match.group(1)
+                print(f"  Citations: {metrics['Citations']}")
+            
+            # Extract Article count
+            article_match = re.search(r'Article\s*(\d+)', text, re.IGNORECASE)
+            if article_match:
+                metrics['Articles'] = article_match.group(1)
+                print(f"  Articles: {metrics['Articles']}")
         
         data['metrics'] = metrics
         data['id'] = SINTA_ID
@@ -124,6 +149,8 @@ def extract_profile_data(soup):
         
     except Exception as e:
         print(f"Error extracting profile data: {e}")
+        import traceback
+        traceback.print_exc()
         return None
 
 def generate_profile_card(data):
@@ -131,26 +158,39 @@ def generate_profile_card(data):
     
     name = data.get('name', 'N/A')
     affiliation = data.get('affiliation', 'N/A')
+    department = data.get('department', 'N/A')
     metrics = data.get('metrics', {})
     sinta_id = data.get('id', SINTA_ID)
     url = data.get('url', SINTA_URL)
     
-    h_index = metrics.get('h_index', '0')
-    i10_index = metrics.get('i10_index', '0')
-    articles = metrics.get('articles', '0')
-    citations = metrics.get('citations', '0')
+    # Get metric values with defaults
+    sinta_overall = metrics.get('SINTA Score Overall', '0')
+    sinta_3yr = metrics.get('SINTA Score 3Yr', '0')
+    h_index = metrics.get('H-Index', '0')
+    i10_index = metrics.get('i10-Index', '0')
+    articles = metrics.get('Articles', '0')
+    citations = metrics.get('Citations', '0')
     
     profile_card = f"""                    <!-- SINTA 3 Profile Card -->
                     <div class="sinta-profile">
                         <h3>{name}</h3>
                         <div class="sinta-affiliation">
-                            <strong>Affiliation:</strong> {affiliation}
+                            <strong>Affiliation:</strong> {affiliation}<br>
+                            <strong>Department:</strong> {department}
                         </div>
                         <div class="sinta-id">
                             <strong>SINTA ID:</strong> {sinta_id} <span style="opacity: 0.7; font-size: 0.85rem;">(Updated: {datetime.now().strftime('%Y-%m-%d')})</span>
                         </div>
                         
                         <div class="sinta-metrics">
+                            <div class="metric-item">
+                                <div class="metric-label">SINTA Score (Overall)</div>
+                                <div class="metric-value">{sinta_overall}</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">SINTA Score (3Yr)</div>
+                                <div class="metric-value">{sinta_3yr}</div>
+                            </div>
                             <div class="metric-item">
                                 <div class="metric-label">Articles</div>
                                 <div class="metric-value">{articles}</div>
@@ -190,14 +230,19 @@ def fetch_ipr_data():
         for tag in soup(['script', 'style']):
             tag.decompose()
         
-        # Try to find IPR content
-        ipr_content = soup.find('div', class_='ipr-content') or soup.find('section', class_='ipr')
+        # Get all text and clean it up
+        text = soup.get_text(separator='\n', strip=True)
+        lines = [line for line in (line.strip() for line in text.splitlines()) if line]
         
-        if ipr_content:
-            text = ipr_content.get_text(separator='\n', strip=True)
-            lines = [line for line in (line.strip() for line in text.splitlines()) if line]
-            lines = lines[:30]  # Limit to first 30 lines
-            entries_html = ''.join(f'<div class="ipr-entry-detail"><p>{escape(line)}</p></div>' for line in lines)
+        # Filter for IPR-related content
+        ipr_lines = []
+        for line in lines:
+            if any(keyword in line.lower() for keyword in ['ipr', 'patent', 'hak', 'intellectual', 'trademark', 'copyright']):
+                ipr_lines.append(line)
+        
+        if ipr_lines:
+            ipr_lines = ipr_lines[:20]  # Limit to first 20 relevant lines
+            entries_html = ''.join(f'<div class="ipr-entry-detail"><p>{escape(line)}</p></div>' for line in ipr_lines)
             print("✓ Successfully fetched SINTA IPR data")
             return entries_html
         else:
@@ -264,6 +309,8 @@ def update_html_file(html_file, profile_card, ipr_section):
 
     except Exception as e:
         print(f"Error updating HTML file: {e}")
+        import traceback
+        traceback.print_exc()
         return False
 
 def main():
@@ -278,13 +325,16 @@ def main():
         print("✗ Failed to fetch SINTA profile data")
         sys.exit(1)
     
+    print("\nGenerating profile card...")
     profile_card = generate_profile_card(profile_data)
 
     # Fetch IPR page content
+    print("\nFetching IPR data...")
     ipr_html = fetch_ipr_data()
     ipr_section = generate_ipr_section(ipr_html)
 
     # Update HTML file
+    print("\nUpdating publications.html...")
     html_file = 'publications.html'
     success = update_html_file(html_file, profile_card, ipr_section)
 
