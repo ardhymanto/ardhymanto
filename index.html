@@ -5,32 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Engineer / Lecturer Profile</title>
 <style>
-
 html{
     scroll-behavior:smooth;
 }
 
-.contact-box{
-    background:#f2f2f2;
-    padding:20px;
-    border-radius:8px;
-    margin:20px 0;
-    border-left:4px solid #1f4e79;
+body{
+    font-family:Arial,sans-serif;
+    margin:0;
+    line-height:1.6;
+    color:#333;
 }
-
-.contact-box p{
-    margin:5px 0;
-}
-
-.profile-photo{
-    width:160px;
-    height:160px;
-    border-radius:50%;
-    object-fit:cover;
-    border:4px solid white;
-    margin-bottom:15px;
-}
-body{font-family:Arial,sans-serif;margin:0;line-height:1.6;color:#333}
 
 header{
     background:#1f4e79;
@@ -50,12 +34,44 @@ header{
     text-align:left;
 }
 
-nav{background:#163a5c;padding:10px;text-align:center}
-nav a{color:white;text-decoration:none;margin:0 12px}
-section{padding:40px 10%;border-bottom:1px solid #ddd}
-h2{color:#1f4e79}
-.card{background:#f7f7f7;padding:15px;border-radius:8px;margin:10px 0}
-    .edu-card{
+.profile-photo{
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid white;
+    margin-bottom:15px;
+}
+
+nav{
+    background:#163a5c;
+    padding:10px;
+    text-align:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 12px;
+}
+
+section{
+    padding:40px 10%;
+    border-bottom:1px solid #ddd;
+}
+
+h2{
+    color:#1f4e79;
+}
+
+.card{
+    background:#f7f7f7;
+    padding:15px;
+    border-radius:8px;
+    margin:10px 0;
+}
+
+.edu-card{
     display:flex;
     align-items:center;
     gap:20px;
@@ -66,8 +82,42 @@ h2{color:#1f4e79}
     height:80px;
     object-fit:contain;
 }
-footer{background:#1f4e79;color:white;text-align:center;padding:20px}
-ul{padding-left:20px}
+
+.research-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.research-tags span{
+    background:#d7c53f;
+    padding:8px 14px;
+    border-radius:20px;
+    border:1px solid #ddd;
+}
+
+.contact-box{
+    background:#f2f2f2;
+    padding:20px;
+    border-radius:8px;
+    margin:20px 0;
+    border-bottom:4px solid #9b9292;
+}
+
+.contact-box p{
+    margin:5px 0;
+}
+
+footer{
+    background:#1f4e79;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+ul{
+    padding-left:20px;
+}
 
 #topBtn{
     display:none;
@@ -90,58 +140,8 @@ ul{padding-left:20px}
     background:#163a5c;
 }
 
-
-<style>
-
-html{
-    scroll-behavior:smooth;
-}
-
-.profile-photo{
-    width:160px;
-    height:160px;
-    border-radius:50%;
-    object-fit:cover;
-    border:4px solid white;
-    margin-bottom:15px;
-}
-
-header{
-    background:#1f4e79;
-    color:white;
-    padding:50px 20px;
-}
-
-.header-container{
-    max-width:1000px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    gap:30px;
-}
-
-.header-text{
-    text-align:left;
-}
-
-.research-tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-}
-
-.research-tags span{
-    background:#5bdfe5;
-    padding:8px 14px;
-    border-radius:20px;
-    border:1px solid #ddd;
-}
-
-/* all your other CSS here */
-
 /* Mobile version */
 @media (max-width: 768px){
-
     .header-container{
         flex-direction:column;
         text-align:center;
@@ -150,69 +150,40 @@ header{
     .header-text{
         text-align:center;
     }
-
 }
-
 </style>
 </head>
 <body>
 
 <header>
     <div class="header-container">
-
-        <img src="images/profile.png"
-             alt="Dr. Ardhymanto Am Tanjung"
-             class="profile-photo">
-
+        <img src="images/profile.png" alt="Dr. Ardhymanto Am Tanjung" class="profile-photo">
         <div class="header-text">
-
             <h1>Ir. Ardhymanto Am Tanjung, Ph.D.</h1>
-
             <p>Engineer | Lecturer | Researcher</p>
-
-            <img src="https://visitor-badge.laobi.icu/badge?page_id=ardhymanto.ardhymanto.github.io"
-                 alt="Visitor Badge">
-
+            <img src="https://visitor-badge.laobi.icu/badge?page_id=ardhymanto.ardhymanto.github.io" alt="Visitor Badge">
             <p>
-                Universitas Negeri Padang |
-                Mining Engineering Department
+                Universitas Negeri Padang | Mining Engineering Department
             </p>
-
             <p>
-                <a href="https://orcid.org/0000-0001-5043-7321"
-                   target="_blank"
-                   style="color:white;">ORCID</a>
-                |
-                <a href="https://www.scopus.com/authid/detail.uri?authorId=58616861700"
-                   target="_blank"
-                   style="color:white;">Scopus</a>
-                <a href="https://www.webofscience.com/wos/author/record/AHC-8278-2022"
-                   target="_blank"
-                   style="color:white;">WOS</a>
-                |
-                <a href="https://scholar.google.com/citations?user=Dj0n1QwAAAAJ&hl=en&oi=ao"
-                   target="_blank"
-                   style="color:white;">Google Scholar</a>
-                <a href="https://www.linkedin.com/in/ardhymanto/?locale=en"
-                    target="_blank"
-                    style="color:white;">LinkedIn</a>
-                <a href="https://www.researchgate.net/profile/Ardhymanto-Am-Tanjung?ev=hdr_xprf"
-                    target="_blank"
-                    style="color:white;">ResearchGate</a>
+                <a href="https://orcid.org/0000-0001-5043-7321" target="_blank" style="color:white;">ORCID</a> |
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=58616861700" target="_blank" style="color:white;">Scopus</a> |
+                <a href="https://www.webofscience.com/wos/author/record/AHC-8278-2022" target="_blank" style="color:white;">WOS</a> |
+                <a href="https://scholar.google.com/citations?user=Dj0n1QwAAAAJ&hl=en&oi=ao" target="_blank" style="color:white;">Google Scholar</a> |
+                <a href="https://www.linkedin.com/in/ardhymanto/?locale=en" target="_blank" style="color:white;">LinkedIn</a> |
+                <a href="https://www.researchgate.net/profile/Ardhymanto-Am-Tanjung?ev=hdr_xprf" target="_blank" style="color:white;">ResearchGate</a>
             </p>
-
         </div>
-
     </div>
 </header>
     
 <nav>
     <a href="#about">About</a>
+    <a href="#experience">Experience</a>
     <a href="#education">Education</a>
     <a href="research.html">Research</a>
     <a href="publications.html">Publications</a>
     <a href="#collaboration">Collaboration</a>
-    
 </nav>
 
 <section id="about">
@@ -224,7 +195,6 @@ header{
 </p>
 
 <h3>Research Areas</h3>
-
 <div class="research-tags">
     <span>Rock Mechanics</span>
     <span>Underground Excavation</span>
@@ -235,7 +205,7 @@ header{
 </div>
 
 <p style="text-align: justify;">
-    I welcome opportunities for research collaboration, academic partnerships, and professional networking. Please feel free to contact me!.
+    I welcome opportunities for research collaboration, academic partnerships, and professional networking. Please feel free to contact me.
 </p>
 
 <div class="contact-box">
@@ -244,56 +214,65 @@ header{
     <p>Universitas Negeri Padang</p>
     <p>Email: ardhy@ft.unp.ac.id</p>
 </div>
+</section>
 
+<section id="experience">
+<h2>Professional Experience</h2>
+
+<div class="card">
+    <h3>Assistant Professor / Lecturer</h3>
+    <p><strong>Universitas Negeri Padang</strong> | 2020 - Present</p>
+    <ul>
+        <li>Deliver academic lectures for Diploma and Bachelor programs in Mining Engineering.</li>
+        <li>Conduct research in geomechanics, rock mechanics, and sustainable mine backfill materials.</li>
+        <li>Supervise student research projects and academic developments.</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h3>Researcher / Graduate Assistant</h3>
+    <p><strong>King Abdulaziz University</strong> | 2022 - 2026</p>
+    <ul>
+        <li>Conducted research specializing in Cemented Paste Backfill for underground mining using pozzolanic materials.</li>
+        <li>Collaborated on structural and mineral analysis projects using XRD, TGA, FTIR, and SEM EDS tools.</li>
+    </ul>
+</div>
 </section>
 
 <section id="education">
 <h2>Educational Background</h2>
 
 <div class="card edu-card">
-    <img src="images/kau-logo.png"
-         alt="King Abdulaziz University"
-         class="edu-logo">
-
+    <img src="images/kau-logo.png" alt="King Abdulaziz University" class="edu-logo">
     <div>
-        <h3>PhD in Mining Engineering</h3>
-        <p>King Abdulaziz University, 2026</p>
+        <h3>(Ph.D) in Mining Engineering</h3>
+        <p>King Abdulaziz University, Saudi Arabia</p>
     </div>
 </div>
 
 <div class="card edu-card">
-    <img src="images/unand-logo.png"
-         alt="Universitas Andalas"
-         class="edu-logo">
-
+    <img src="images/unand-logo.png" alt="Universitas Andalas" class="edu-logo">
     <div>
-        <h3>Professional Engineer (Ir.)</h3>
-        <p>Universitas Andalas, 2024</p>
+        <h3> (Ir.) Professional Engineer</h3>
+        <p>Universitas Andalas, Indonesia</p>
     </div>
 </div>
 
 <div class="card edu-card">
-    <img src="images/rwth-logo.png"
-         alt="RWTH Aachen University"
-         class="edu-logo">
-
+    <img src="images/rwth-logo.png" alt="RWTH Aachen University" class="edu-logo">
     <div>
-        <h3>M.Sc. Applied Geosciences of Energy and Mineral Resources</h3>
-        <p>RWTH Aachen University, Germany, 2020</p>
+        <h3>(M.Sc.RWTH) in Applied Geosciences of Energy and Mineral Resources</h3>
+        <p>RWTH Aachen University, Germany</p>
     </div>
 </div>
 
 <div class="card edu-card">
-    <img src="images/unp-logo.png"
-         alt="Universitas Negeri Padang"
-         class="edu-logo">
-
+    <img src="images/unp-logo.png" alt="Universitas Negeri Padang" class="edu-logo">
     <div>
-        <h3>Associate & Bachelor's Degree in Mining Engineering</h3>
-        <p>Universitas Negeri Padang</p>
+        <h3>(A.Md, S.T) Associate & Bachelor's Degree in Mining Engineering</h3>
+        <p>Universitas Negeri Padang, Indonesia</p>
     </div>
 </div>
-
 </section>
 
 <section id="research">
@@ -303,15 +282,12 @@ header{
 <div class="research-tags">
     <span>Mine Surveying</span>
     <span>Introductory for Mining Engineering</span>
-   
 </div>
 
 <h3>Bachelor Program (Mining Engineering)</h3>
-
 <div class="research-tags">
     <span>Statistics</span>
     <span>Rock Mechanics</span>
-   
 </div>
 </section>
 
@@ -325,7 +301,6 @@ header{
 <li>Saudi Lime - Collaboration for utilizing the Hydrated line product</li>
 </ul>
 </section>
-
 
 <footer>
 <p>© 2026 Ardhymanto Am Tanjung. All Rights Reserved.</p>
