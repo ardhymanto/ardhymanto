@@ -111,16 +111,16 @@ footer{
     width:70px;
     height:50px;
     object-fit:contain;
-background:rgb(255, 255, 255);
+    background:rgb(255, 255, 255);
     padding:8px;
     border-radius:40px;
-
     transition:0.3s;
 }
 
 .profile-icons img:hover{
     transform:scale(1.1);
 }
+
 .metrics-container{
     display:flex;
     gap:20px;
@@ -137,6 +137,8 @@ background:rgb(255, 255, 255);
     padding:10px;
     border-radius:50px;
     box-shadow:0 2px 5px rgba(218, 197, 8, 0.15);
+}
+
 .metric-card h3{
     margin:0;
     font-size:16px;
@@ -155,99 +157,166 @@ background:rgb(255, 255, 255);
     border-radius:16px;
     box-shadow:0 4px 18px rgba(0,0,0,0.08);
     margin-bottom:24px;
+    border-left:5px solid #12314e;
 }
 
 .sinta-profile h3{
     margin-top:0;
     color:#12314e;
-    font-size:1.5rem;
+    font-size:1.8rem;
+    font-weight:bold;
+}
+
+.sinta-id{
+    background:#f0f4f8;
+    padding:12px 16px;
+    border-radius:8px;
+    font-size:0.95rem;
+    margin:1rem 0;
+    color:#333;
 }
 
 .sinta-affiliation{
     color:#555;
     margin:0.5rem 0 1rem;
-    line-height:1.6;
+    line-height:1.8;
+    font-size:1rem;
+}
+
+.sinta-affiliation strong{
+    color:#12314e;
+    display:block;
+    margin-top:0.5rem;
+    font-weight:600;
 }
 
 .sinta-affiliation a{
     color:#12314e;
     text-decoration:none;
+    font-weight:500;
+}
+
+.sinta-affiliation a:hover{
+    text-decoration:underline;
 }
 
 .sinta-metrics{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
-    gap:1rem;
-    margin-top:1rem;
-}
-
-.sinta-metric-item{
-    background:#e9eff8;
-    color:#12314e;
-    padding:14px 16px;
-    border-radius:12px;
-    text-align:center;
-}
-
-.sinta-metric-item .metric-label{
-    display:block;
-    font-size:0.82rem;
-    opacity:.85;
-    margin-bottom:0.4rem;
-}
-
-.sinta-metric-item .metric-value{
-    font-size:1.6rem;
-    font-weight:700;
-}
-
-.sinta-score{
-    background:#f4f7fb;
-    padding:16px;
-    border-radius:12px;
+    grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
+    gap:12px;
     margin-top:1.5rem;
 }
 
-.sinta-score-title{
-    font-size:0.85rem;
-    font-weight:700;
-    letter-spacing:0.06em;
-    color:#2d4d79;
-    margin-bottom:0.8rem;
+.metric-item{
+    background:#e9eff8;
+    color:#12314e;
+    padding:16px;
+    border-radius:12px;
+    text-align:center;
+    border-top:3px solid #12314e;
+    transition:all 0.3s ease;
+}
+
+.metric-item:hover{
+    box-shadow:0 4px 12px rgba(18, 49, 78, 0.15);
+    transform:translateY(-2px);
+}
+
+.metric-item .metric-label{
+    display:block;
+    font-size:0.8rem;
+    opacity:.8;
+    margin-bottom:0.6rem;
+    font-weight:600;
     text-transform:uppercase;
+    letter-spacing:0.04em;
 }
 
-.sinta-subjects{
-    display:flex;
-    flex-wrap:wrap;
-    gap:0.6rem;
-    margin-top:1rem;
-}
-
-.subject-tag{
-    background:#eef4ff;
-    color:#1d3b72;
-    padding:0.45rem 0.85rem;
-    border-radius:999px;
-    font-size:0.88rem;
+.metric-item .metric-value{
+    font-size:2rem;
+    font-weight:700;
+    color:#020481;
 }
 
 .sinta-link{
     display:inline-block;
-    margin-top:1rem;
-    padding:0.75rem 1.25rem;
+    margin-top:1.5rem;
+    padding:0.85rem 1.5rem;
     background:#12314e;
     color:white;
-    border-radius:999px;
+    border-radius:8px;
     text-decoration:none;
-    transition:transform .2s ease, background .2s ease;
+    transition:all .3s ease;
+    font-weight:600;
 }
 
 .sinta-link:hover{
-    transform:translateY(-1px);
+    transform:translateY(-2px);
     background:#0d243f;
+    box-shadow:0 4px 12px rgba(18, 49, 78, 0.25);
 }
+
+.ipr-section{
+    background:#f9fbfd;
+    padding:20px;
+    border-radius:12px;
+    border-left:4px solid #20c997;
+    margin-top:1.5rem;
+}
+
+.ipr-entry-title{
+    font-size:1.1rem;
+    font-weight:700;
+    color:#12314e;
+    margin-bottom:12px;
+}
+
+.ipr-entry-detail{
+    background:white;
+    padding:12px 16px;
+    margin:8px 0;
+    border-radius:8px;
+    border-left:3px solid #20c997;
+    font-size:0.95rem;
+    line-height:1.6;
+}
+
+.ipr-entry-detail p{
+    margin:0;
+}
+
+.ipr-note{
+    font-size:0.85rem;
+    color:#666;
+    margin-top:12px;
+    padding-top:12px;
+    border-top:1px solid #ddd;
+}
+
+.ipr-note a{
+    color:#12314e;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.ipr-note a:hover{
+    text-decoration:underline;
+}
+
+@media (max-width: 768px) {
+    .sinta-metrics{
+        grid-template-columns:repeat(auto-fit, minmax(100px, 1fr));
+    }
     
+    .metric-item .metric-value{
+        font-size:1.5rem;
+    }
+    
+    .sinta-profile h3{
+        font-size:1.4rem;
+    }
+}
+
 </style>
 
 </head>
@@ -335,31 +404,20 @@ Index Matrices
 This page automatically retrieves publications from ORCID.
 </p>
 
-<section class="sinta-profile">
-    <h2>SINTA Publication Profile</h2>
-    <p class="sinta-affiliation">This section will show your latest SINTA publication metrics and academic scores after the next manual update.</p>
-    <div class="ipr-entry-detail" style="margin-top:1rem;">
-        Current status: <strong>waiting for your manual GitHub Actions run</strong>
-    </div>
-    <div class="ipr-entry-detail" style="margin-top:0.8rem;">
-        To update now, run the <strong>Update SINTA Profile</strong> workflow in your repository's Actions tab.
-    </div>
-</section>
-
                     <!-- SINTA 3 Profile Card -->
                     <div class="sinta-profile">
                         <h3>ARDHYMANTO AM TANJUNG</h3>
-                        <div class="sinta-affiliation">
-                            <strong>Affiliation:</strong> Universitas Negeri PadangD3 - Teknik Pertambangan (Kampus Kabupaten Sawahlunto)SINTA ID : 6775330<br>
-                            <strong>Department:</strong> N/A
-                        </div>
                         <div class="sinta-id">
                             <strong>SINTA ID:</strong> 6775330 <span style="opacity: 0.7; font-size: 0.85rem;">(Updated: 2026-06-08)</span>
+                        </div>
+                        <div class="sinta-affiliation">
+                            <strong>Affiliation:</strong> Universitas Negeri Padang<br>
+                            <strong>Department:</strong> D3 - Teknik Pertambangan (Kampus Kabupaten Sawahlunto)
                         </div>
                         
                         <div class="sinta-metrics">
                             <div class="metric-item">
-                                <div class="metric-label">SINTA Score (Overall)</div>
+                                <div class="metric-label">SINTA Score</div>
                                 <div class="metric-value">194</div>
                             </div>
                             <div class="metric-item">
@@ -387,13 +445,10 @@ This page automatically retrieves publications from ORCID.
                         <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6775330" target="_blank" class="sinta-link">View Full SINTA Profile →</a>
                     </div>
 
-
                     <!-- SINTA IPR Content -->
                     <div id="sinta-ipr-content" class="ipr-section">
-                        <div class="ipr-entry">
-                            <div class="ipr-entry-title">IPR details from SINTA</div>
-                        </div>
-                        <div class="ipr-entry-detail"><p>IPR</p></div><div class="ipr-entry-detail"><p>IPRs</p></div><div class="ipr-entry-detail"><p>Hak Cipta</p></div><div class="ipr-entry-detail"><p>Hak Cipta</p></div>
+                        <div class="ipr-entry-title">IPR Details from SINTA</div>
+                        <div class="ipr-entry-detail"><p>IPR</p></div><div class="ipr-entry-detail"><p>IPRs</p></div><div class="ipr-entry-detail"><p>Hak Cipta</p></div><div class="ipr-entry-detail"><p>Paten</p></div>
                         <div class="ipr-note">View full IPR details: <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6775330/?view=iprs" target="_blank" rel="noopener">SINTA IPR Page</a></div>
                         <div class="ipr-note">Last updated: 2026-06-08 09:38 UTC</div>
                     </div>
