@@ -42,6 +42,14 @@ def fetch_sinta_data(author_id):
     try:
         print(f"Fetching SINTA data for author ID: {author_id}...")
         author_data = sinta.author(author_id)
+        
+        # Handle case where sinta.author() returns a list
+        if isinstance(author_data, list):
+            if len(author_data) == 0:
+                print("Error: No author data returned from SINTA")
+                sys.exit(1)
+            author_data = author_data[0]
+        
         return author_data
     except Exception as e:
         print(f"Error fetching SINTA data: {e}")
