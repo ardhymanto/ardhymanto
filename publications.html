@@ -122,33 +122,41 @@ footer{
 }
 
 .metrics-container{
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
+    gap:12px;
     margin-bottom:20px;
 }
 
 .metric-card{
-    flex:1;
-    min-width:70px;
-    background:hsla(224, 96%, 18%, 0.966);
-    color:rgb(210, 233, 7);
+    background:#e9eff8;
+    color:#12314e;
+    padding:16px;
+    border-radius:12px;
     text-align:center;
-    padding:10px;
-    border-radius:50px;
-    box-shadow:0 2px 5px rgba(218, 197, 8, 0.15);
+    border-top:3px solid #12314e;
+    transition:all 0.3s ease;
+}
+
+.metric-card:hover{
+    box-shadow:0 4px 12px rgba(18, 49, 78, 0.15);
+    transform:translateY(-2px);
 }
 
 .metric-card h3{
     margin:0;
-    font-size:16px;
-    font-weight:normal;
+    font-size:0.8rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    opacity:.8;
 }
 
 .metric-card p{
     margin:10px 0 0;
-    font-size:32px;
+    font-size:2rem;
     font-weight:bold;
+    color:#020481;
 }
 
 .sinta-profile{
@@ -256,6 +264,14 @@ footer{
     box-shadow:0 4px 12px rgba(18, 49, 78, 0.25);
 }
 
+.last-update{
+    font-size:0.85rem;
+    color:#666;
+    margin-top:16px;
+    padding-top:12px;
+    border-top:1px solid #e0e0e0;
+}
+
 .ipr-section{
     background:#f9fbfd;
     padding:20px;
@@ -295,7 +311,15 @@ footer{
         grid-template-columns:repeat(auto-fit, minmax(100px, 1fr));
     }
     
+    .metrics-container{
+        grid-template-columns:repeat(auto-fit, minmax(100px, 1fr));
+    }
+    
     .metric-item .metric-value{
+        font-size:1.5rem;
+    }
+    
+    .metric-card p{
         font-size:1.5rem;
     }
     
@@ -360,33 +384,6 @@ Visit my publication profile, here!
 
 <h2>Publication Database</h2>
 
-<p>
-Index Matrices
-</p>
-
-<div class="metrics-container">
-
-    <div class="metric-card">
-        <h3>GoogleScholar (H-index)</h3>
-        <p>3</p>
-    </div>
-
-    <div class="metric-card">
-        <h3>WOS (Impact Factor)</h3>
-        <p>1</p>
-    </div>
-
-    <div class="metric-card">
-        <h3>Scopus (H-index)</h3>
-        <p>2</p>
-    </div>
- 
-</div>
-
-<div class="last-update">
-    Last updated: 07 June 2026
-</div>
-
                     <!-- SINTA 3 Profile Card -->
                     <div class="sinta-profile">
                         <h3>ARDHYMANTO AM TANJUNG</h3>
@@ -425,6 +422,26 @@ Index Matrices
                         </div>
                         
                         <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6775330" target="_blank" class="sinta-link">View Full SINTA Profile →</a>
+
+                        <p style="margin-top: 1.5rem; font-weight: 600; color: #12314e;">Index Matrices</p>
+                        <div class="metrics-container">
+                            <div class="metric-card">
+                                <h3>GoogleScholar (H-index)</h3>
+                                <p>3</p>
+                            </div>
+                            <div class="metric-card">
+                                <h3>WOS (Impact Factor)</h3>
+                                <p>1</p>
+                            </div>
+                            <div class="metric-card">
+                                <h3>Scopus (H-index)</h3>
+                                <p>2</p>
+                            </div>
+                        </div>
+
+                        <div class="last-update">
+                            Last updated: 07 June 2026
+                        </div>
                     </div>
 
                     <!-- SINTA IPR Content -->
