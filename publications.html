@@ -163,6 +163,13 @@ td{
     padding:14px 12px;
     border-bottom:1px solid #ddd;
     font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+/* Custom limits for SCImago badge elements */
+td img {
+    max-height: 55px;
+    display: block;
 }
 
 tr:nth-child(even){
@@ -464,7 +471,6 @@ footer{
 
 <h2>Publication Database</h2>
 
-                    <!-- SINTA 3 Profile Card -->
                     <div class="sinta-profile">
                         <h3>ARDHYMANTO AM TANJUNG</h3>
                         <div class="sinta-id">
@@ -524,17 +530,13 @@ footer{
                         </div>
                     </div>
 
-                    <!-- SINTA IPR Content -->
                     <div id="sinta-ipr-content" class="ipr-section">
                         <div class="ipr-note">View full IPR details: <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/6775330/?view=iprs" target="_blank" rel="noopener">SINTA IPR Page</a></div>
                     </div>
-                    <!-- END SINTA IPR Content -->
-
-<div class="publications-intro">
+                    <div class="publications-intro">
     This page automatically retrieves and renders publications directly from our live Google Sheets database.
 </div>
 
-<!-- Combined Dynamic Controls Box -->
 <div class="filter-container">
     <div class="search-box">
         <input type="text" id="pubSearch" placeholder="Search by title, authors, journal, or keywords...">
@@ -547,13 +549,11 @@ footer{
     </div>
 </div>
 
-<!-- Visual Statistics Counter -->
 <div id="pub-count" class="pub-count"></div>
 
 <table>
     <thead>
-        <!-- Headers are dynamically populated based on your actual Google Sheet columns -->
-    </thead>
+        </thead>
     <tbody id="pub-body">
         <tr>
             <td class="loading">Loading publications from Google Sheets database...</td>
@@ -609,7 +609,7 @@ function parseCSV(text) {
     return lines;
 }
 
-// Function to escape HTML to prevent XSS issues while modifying specific content strings
+// Function to escape HTML safely
 function escapeHTML(str) {
     return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
 }
@@ -619,10 +619,7 @@ function highlightAuthorName(text) {
     const targetName = "Ardhymanto Am Tanjung";
     if (!text) return '—';
     
-    // Creates a safe escape query regex match pattern
     const regex = new RegExp(`(${targetName.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
-    
-    // Escapes common HTML syntax errors first, then inserts structural highlight bold text wrapper tags
     return escapeHTML(text).replace(regex, '<strong>$1</strong>');
 }
 
@@ -700,7 +697,7 @@ function handleSort(columnIndex) {
         currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
     } else {
         currentSort.columnIndex = columnIndex;
-        currentSort.direction = 'desc'; // default to high-to-low on first click
+        currentSort.direction = 'desc'; // default to high-to-low on click
     }
     renderTable();
 }
@@ -730,7 +727,6 @@ function renderTable() {
             const valA = a.cells[idx] || '';
             const valB = b.cells[idx] || '';
             
-            // Smart numeric checking (e.g. tracking chronological years accurately)
             if (!isNaN(valA) && !isNaN(valB) && valA !== '' && valB !== '') {
                 return (Number(valA) - Number(valB)) * dir;
             }
@@ -764,6 +760,7 @@ function renderTable() {
 
     const linkIdx = headers.findIndex(h => h.toLowerCase().includes('link') || h.toLowerCase().includes('url') || h.toLowerCase().includes('doi'));
     const titleIdx = headers.findIndex(h => h.toLowerCase().includes('title'));
+    const qSintaIdx = headers.findIndex(h => h.toLowerCase() === 'q/sinta');
 
     filteredData.forEach(pub => {
         const row = document.createElement("tr");
@@ -771,19 +768,21 @@ function renderTable() {
         pub.cells.forEach((cellText, idx) => {
             const td = document.createElement("td");
             
+            // CRITICAL CHECK: If it's the Q/SINTA column, bypass text escaping to render raw HTML/images
+            if (idx === qSintaIdx) {
+                td.innerHTML = cellText || '—';
+            }
             // Clean-up view layer if a raw URL column is fed
-            if (idx === linkIdx && cellText) {
+            else if (idx === linkIdx && cellText) {
                 let cleanUrl = cellText.startsWith('http') ? cellText : 'https://' + cellText;
                 td.innerHTML = `<a href="${cleanUrl}" target="_blank" class="view-link">🔗 View Article</a>`;
             } 
             // Wrap the Title value as a clean hyperlink if a Link column metadata exists
             else if (idx === titleIdx && pub.link) {
                 let cleanUrl = pub.link.startsWith('http') ? pub.link : 'https://' + pub.link;
-                // Applies the dynamic highlight logic here inside your title if your name is written in it
                 td.innerHTML = `<a href="${cleanUrl}" target="_blank" style="color: #012a50; font-weight: 600; text-decoration: none; border-bottom: 1px dashed #ccc;">${highlightAuthorName(cellText)}</a>`;
             }
             else {
-                // Processes name string bolding for normal content columns (like an 'Authors' column)
                 td.innerHTML = highlightAuthorName(cellText);
             }
             row.appendChild(td);
