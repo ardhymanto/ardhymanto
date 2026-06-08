@@ -29,6 +29,25 @@
             font-size: 1.1rem;
             opacity: 0.9;
         }
+        
+        /* New Navigation Styles */
+        nav {
+            background: #1a252f;
+            padding: 12px;
+            text-align: right;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        nav a:hover {
+            color: #3498db;
+        }
+
         .container {
             max-width: 1200px;
             margin: 2rem auto;
@@ -166,6 +185,7 @@
             display: flex;
             border-bottom: 2px solid #ecf0f1;
             margin-bottom: 0;
+            flex-wrap: wrap;
         }
         .tab-btn {
             padding: 1rem 1.5rem;
@@ -350,8 +370,11 @@
         <p class="subtitle">Advancing Knowledge and Community Growth</p>
     </header>
 
+    <nav>
+        <a href="index.html">← Back to Profile</a>
+    </nav>
+
     <div class="container">
-        <!-- Tabbed Sections (Elementor-like) -->
         <div class="section">
             <div class="tabs" role="tablist" aria-label="Sections Tabs">
                 <button class="tab-btn active" data-tab="tab-research" role="tab" aria-selected="true">📚 Research</button>
@@ -362,7 +385,6 @@
             <div class="tab-content active" id="tab-research" role="tabpanel">
                 <div class="section-header">📚 Research</div>
                 <div class="section-content">
-                    <!-- keep existing research content -->
                     <div class="project-item">
                         <div class="project-title">Research Project Title</div>
                         <span class="project-status status-ongoing">On Going</span>
@@ -393,7 +415,6 @@
             <div class="tab-content" id="tab-ipr" role="tabpanel">
                 <div class="section-header">🛡️ Intellectual Property Rights (IPR)</div>
                 <div class="section-content">
-                    <!-- SINTA IPR Content -->
                     <div id="sinta-ipr-content" class="ipr-section">
                         <div class="ipr-entry">
                             <div class="ipr-entry-title">IPR data will be loaded from your SINTA IPR page.</div>
@@ -401,14 +422,13 @@
                         </div>
                         <div class="ipr-note">If the SINTA page includes patents, copyrights, or other registered IPR items, they will appear here after the next update.</div>
                     </div>
-                    <!-- END SINTA IPR Content -->
-                </div>
+                    </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2024 Research & Community Development. All rights reserved.</p>
+        <p>&copy; 2026 Research & Community Development. All rights reserved.</p>
     </footer>
 
     <script>
