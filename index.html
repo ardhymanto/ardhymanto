@@ -5,6 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Engineer / Lecturer Profile</title>
 <style>
+
+html{
+    scroll-behavior:smooth;
+}
+
+.contact-box{
+    background:#f2f2f2;
+    padding:20px;
+    border-radius:8px;
+    margin:20px 0;
+    border-left:4px solid #1f4e79;
+}
+
+.contact-box p{
+    margin:5px 0;
+}
+
 .profile-photo{
     width:160px;
     height:160px;
@@ -14,7 +31,25 @@
     margin-bottom:15px;
 }
 body{font-family:Arial,sans-serif;margin:0;line-height:1.6;color:#333}
-header{background:#1f4e79;color:white;padding:50px 20px;text-align:center}
+
+header{
+    background:#1f4e79;
+    color:white;
+    padding:50px 20px;
+}
+
+.header-container{
+    max-width:1000px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.header-text{
+    text-align:left;
+}
+
 nav{background:#163a5c;padding:10px;text-align:center}
 nav a{color:white;text-decoration:none;margin:0 12px}
 section{padding:40px 10%;border-bottom:1px solid #ddd}
@@ -33,93 +68,185 @@ h2{color:#1f4e79}
 }
 footer{background:#1f4e79;color:white;text-align:center;padding:20px}
 ul{padding-left:20px}
+
+#topBtn{
+    display:none;
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    z-index:99;
+    border:none;
+    outline:none;
+    background:#1f4e79;
+    color:white;
+    cursor:pointer;
+    padding:12px 16px;
+    border-radius:50%;
+    font-size:20px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.3);
+}
+
+#topBtn:hover{
+    background:#163a5c;
+}
+
+
+<style>
+
+html{
+    scroll-behavior:smooth;
+}
+
+.profile-photo{
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid white;
+    margin-bottom:15px;
+}
+
+header{
+    background:#1f4e79;
+    color:white;
+    padding:50px 20px;
+}
+
+.header-container{
+    max-width:1000px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.header-text{
+    text-align:left;
+}
+
+.research-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.research-tags span{
+    background:#f2f2f2;
+    padding:8px 14px;
+    border-radius:20px;
+    border:1px solid #ddd;
+}
+
+/* all your other CSS here */
+
+/* Mobile version */
+@media (max-width: 768px){
+
+    .header-container{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .header-text{
+        text-align:center;
+    }
+
+}
+
 </style>
 </head>
 <body>
 
 <header>
+    <div class="header-container">
 
-<img src="images/profile.png"
-     alt="Dr. Ardhymanto Am Tanjung"
-     class="profile-photo">
+        <img src="images/profile.png"
+             alt="Dr. Ardhymanto Am Tanjung"
+             class="profile-photo">
 
-<h1>Ir. Ardhymanto Am Tanjung, Ph.D.</h1>
+        <div class="header-text">
 
-<p>Engineer | Lecturer | Researcher</p>
+            <h1>Ir. Ardhymanto Am Tanjung, Ph.D.</h1>
 
-<p>
-Universitas Negeri Padang |
-Mining Engineering Department
-</p>
+            <p>Engineer | Lecturer | Researcher</p>
 
-<p>
-<a href="https://orcid.org/0000-0001-5043-7321"
-   target="_blank"
-   style="color:white;">ORCID</a>
-|
-<a href="https://www.scopus.com/authid/detail.uri?authorId=58616861700"
-   target="_blank"
-   style="color:white;">Scopus</a>
-|
-<a href="https://scholar.google.com/citations?user=Dj0n1QwAAAAJ&hl=en&oi=ao"
-   target="_blank"
-   style="color:white;">Google Scholar</a>
-</p>
+            <img src="https://visitor-badge.laobi.icu/badge?page_id=ardhymanto.ardhymanto.github.io"
+                 alt="Visitor Badge">
 
+            <p>
+                Universitas Negeri Padang |
+                Mining Engineering Department
+            </p>
+
+            <p>
+                <a href="https://orcid.org/0000-0001-5043-7321"
+                   target="_blank"
+                   style="color:white;">ORCID</a>
+                |
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=58616861700"
+                   target="_blank"
+                   style="color:white;">Scopus</a>
+                <a href="https://www.webofscience.com/wos/author/record/AHC-8278-2022"
+                   target="_blank"
+                   style="color:white;">WOS</a>
+                |
+                <a href="https://scholar.google.com/citations?user=Dj0n1QwAAAAJ&hl=en&oi=ao"
+                   target="_blank"
+                   style="color:white;">Google Scholar</a>
+                <a href="https://www.linkedin.com/in/ardhymanto/?locale=en"
+                    target="_blank"
+                    style="color:white;">LinkedIn</a>
+                <a href="https://www.researchgate.net/profile/Ardhymanto-Am-Tanjung?ev=hdr_xprf"
+                    target="_blank"
+                    style="color:white;">ResearchGate</a>
+            </p>
+
+        </div>
+
+    </div>
 </header>
     
 <nav>
     <a href="#about">About</a>
-    <a href="#metrics">Metrics</a>
     <a href="#education">Education</a>
-    <a href="#research">Research</a>
+    <a href="#research.html">Research</a>
     <a href="publications.html">Publications</a>
-    <a href="#certifications">Certifications</a>
     <a href="#collaboration">Collaboration</a>
-    <a href="#contact">Contact</a>
+    
 </nav>
 
 <section id="about">
 <h2>About Me</h2>
 <p style="text-align: justify;">
-    Dr. Ardhymanto Am Tanjung is an Assistant Professor and researcher in Mining Engineering at Universitas Negeri Padang.
-    His academic interests include mining engineering, Underground excavation, Sustainable mining materials, and applied geosciences.
-    He is actively involved in research collaborations, scientific publications, and professional development activities.
-</p>
-</section>
-<section id="metrics">
-<h2>Research Metrics</h2>
-
-<div class="card">
-<h3>Academic Profiles</h3>
-
-<p>
-<strong>Scopus Author ID:</strong>
-<a href="https://www.scopus.com/authid/detail.uri?authorId=58616861700" target="_blank">
-58616861700
-</a>
+    I am an Assistant Professor and researcher in Mining Engineering at Universitas Negeri Padang.
+    My academic interests include mining engineering, underground excavation, sustainable mining materials, and applied geosciences.
+    I am actively involved in research collaborations, scientific publications, and professional development activities.
 </p>
 
-<p>
-<strong>ORCID:</strong>
-<a href="https://orcid.org/0000-0001-5043-7321" target="_blank">
-0000-0001-5043-7321
-</a>
-</p>
+<h3>Research Areas</h3>
 
-<p>
-<strong>Google Scholar:</strong>
-<a href="https://scholar.google.com/citations?user=Dj0n1QwAAAAJ&hl=en&oi=ao" target="_blank">
-View Profile
-</a>
-</p>
-
-<p><strong>Scopus Citations:</strong> Update periodically</p>
-<p><strong>Scopus h-index:</strong> Update periodically</p>
-<p><strong>Scopus Documents:</strong> Update periodically</p>
-
+<div class="research-tags">
+    <span>Rock Mechanics</span>
+    <span>Underground Excavation</span>
+    <span>Geomechanics</span>
+    <span>Pozzolanic Material</span>
+    <span>Mine Backfill</span>
+    <span>Industrial minerals</span>
 </div>
+
+<p style="text-align: justify;">
+    I welcome opportunities for research collaboration, academic partnerships, and professional networking. Please feel free to contact me through the links provided below.
+</p>
+
+<div class="contact-box">
+    <p><strong>Ir. Ardhymanto Am Tanjung, Ph.D.</strong></p>
+    <p>Mining Engineering Department</p>
+    <p>Universitas Negeri Padang</p>
+    <p>Email: ardhy@ft.unp.ac.id</p>
+</div>
+
 </section>
+
 <section id="education">
 <h2>Educational Background</h2>
 
@@ -170,141 +297,63 @@ View Profile
 </section>
 
 <section id="research">
-<h2>Research Portfolio</h2>
-<ul>
-<li>Research Project 1</li>
-<li>Research Project 2</li>
-<li>Research Project 3</li>
-</ul>
-<p>Include project descriptions, grants, datasets, laboratory work, and research outcomes.</p>
-</section>
+<h2>Courses Taught</h2>
 
-<section id="publications">
-<h2>Publications</h2>
-<p>
-The publication list below is automatically retrieved from ORCID.
-</p>
+<h3>Diploma Program (Mining Engineering)</h3>
+<div class="research-tags">
+    <span>Mine Surveying</span>
+    <span>Introductory for Mining Engineering</span>
+   
+</div>
 
-<ul id="pub-list">
-<li>Loading publications from ORCID...</li>
-</ul>
-</section>
+<h3>Bachelor Program (Mining Engineering)</h3>
 
-<section id="certifications">
-<h2>Certifications & Training</h2>
-<ul>
-<li>Certification Name – Organization</li>
-<li>Professional Training Program</li>
-<li>Teaching Certification</li>
-</ul>
+<div class="research-tags">
+    <span>Statistics</span>
+    <span>Rock Mechanics</span>
+   
+</div>
 </section>
 
 <section id="collaboration">
 <h2>Collaboration & Partnerships</h2>
 <p>List research collaborators, universities, laboratories, industry partners, and international projects.</p>
 <ul>
-<li>Partner Institution 1</li>
-<li>Partner Institution 2</li>
-<li>Research Network 3</li>
+<li>MBCC Jabal Sayid Underground Mining - collaboration to utilize the tailings and mine process water for Cemented Paste Backfill</li>
+<li>Nano Centre KAU - Colaboration in several microstrutural testing such XRD, TGA, FTIR and SEM EDS</li>
+<li>Saudi Geological Survey (SGS) - Collaboration in water test and Frattini Pozzolanic test</li>
+<li>Saudi Lime - Collaboration for utilizing the Hydrated line product</li>
 </ul>
 </section>
 
-<section id="contact">
-<h2>Contact Information</h2>
-
-<p>Email: ardhy@ft.unp.ac.id</p>
-
-<p>
-LinkedIn:
-<a href="https://www.linkedin.com/in/ardhymanto/?locale=en" target="_blank">
-View Profile
-</a>
-</p>
-
-<p>
-ORCID:
-<a href="https://orcid.org/0000-0001-5043-7321" target="_blank">
-0000-0001-5043-7321
-</a>
-</p>
-
-<p>
-Scopus:
-<a href="https://www.scopus.com/authid/detail.uri?authorId=58616861700" target="_blank">
-Author ID 58616861700
-</a>
-</p>
-
-<p>
-Google Scholar:
-<a href="https://scholar.google.com/citations?user=Dj0n1QwAAAAJ&hl=en&oi=ao" target="_blank">
-View Profile
-</a>
-</p>
-
-<p>
-Universitas Negeri Padang<br>
-Department of Mining Engineering
-</p>
-</section>
 
 <footer>
-<p>© 2026 Ir. Ardhymanto Am Tanjung., P.hD. All Rights Reserved.</p>
+<p>© 2026 Ardhymanto Am Tanjung. All Rights Reserved.</p>
 </footer>
+
+<button id="topBtn" title="Go to top">↑</button>
+
 <script>
-const orcid = "0000-0001-5043-7321";
+const topBtn = document.getElementById("topBtn");
 
-fetch(`https://pub.orcid.org/v3.0/${orcid}/works`, {
-    headers: {
-        "Accept": "application/json"
+window.onscroll = function() {
+    if (
+        document.body.scrollTop > 300 ||
+        document.documentElement.scrollTop > 300
+    ) {
+        topBtn.style.display = "block";
+    } else {
+        topBtn.style.display = "none";
     }
-})
-.then(response => response.json())
-.then(data => {
+};
 
-    const list = document.getElementById("pub-list");
-    list.innerHTML = "";
-
-    if (!data.group || data.group.length === 0) {
-        list.innerHTML = "<li>No publications found.</li>";
-        return;
-    }
-
-    data.group.forEach(item => {
-
-        const work =
-            item["work-summary"] &&
-            item["work-summary"][0];
-
-        if (!work) return;
-
-        const title =
-            work.title &&
-            work.title.title &&
-            work.title.title.value
-            ? work.title.title.value
-            : "Untitled Publication";
-
-        const year =
-            work["publication-date"] &&
-            work["publication-date"].year
-            ? work["publication-date"].year.value
-            : "";
-
-        const li = document.createElement("li");
-        li.textContent = `${title} (${year})`;
-
-        list.appendChild(li);
+topBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     });
-
-})
-.catch(error => {
-
-    document.getElementById("pub-list").innerHTML =
-        "<li>Unable to load publications from ORCID.</li>";
-
-    console.error(error);
 });
 </script>
+
 </body>
 </html>
