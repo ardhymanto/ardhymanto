@@ -22,10 +22,38 @@ header{
     color:white;
     text-align:left;
     padding:50px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
 header h1{
     margin:0;
+    flex:1;
+}
+
+.header-icons{
+    display:flex;
+    gap:15px;
+}
+
+.header-icons a{
+    display:inline-block;
+}
+
+.header-icons img{
+    width:50px;
+    height:50px;
+    object-fit:contain;
+    background:rgba(255, 255, 255, 0.1);
+    padding:8px;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.header-icons img:hover{
+    transform:scale(1.1);
+    background:rgba(255, 255, 255, 0.2);
 }
 
 nav{
@@ -100,27 +128,6 @@ footer{
     padding:20px;
 }
 
-.profile-icons{
-    display:flex;
-    justify-content:right;
-    gap:25px;
-    margin-top:20px;
-}
-
-.profile-icons img{
-    width:70px;
-    height:50px;
-    object-fit:contain;
-    background:rgb(255, 255, 255);
-    padding:8px;
-    border-radius:40px;
-    transition:0.3s;
-}
-
-.profile-icons img:hover{
-    transform:scale(1.1);
-}
-
 .metrics-container{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
@@ -136,6 +143,9 @@ footer{
     text-align:center;
     border-top:3px solid #12314e;
     transition:all 0.3s ease;
+    text-decoration:none;
+    display:block;
+    cursor:pointer;
 }
 
 .metric-card:hover{
@@ -307,6 +317,19 @@ footer{
 }
 
 @media (max-width: 768px) {
+    header{
+        flex-direction:column;
+        text-align:center;
+    }
+    
+    header h1{
+        margin-bottom:15px;
+    }
+    
+    .header-icons{
+        justify-content:center;
+    }
+    
     .sinta-metrics{
         grid-template-columns:repeat(auto-fit, minmax(100px, 1fr));
     }
@@ -335,47 +358,18 @@ footer{
 <body>
 
 <header>
-
-<h1>PUBLICATIONS</h1>
-
-<h3>
-Visit my publication profile, here!
-</h3>
-
-<div class="profile-icons">
-
-<a href="https://orcid.org/0000-0001-5043-7321"
-   target="_blank"
-   title="ORCID Profile">
-
-    <img src="images/orcid-logo.png"
-         alt="ORCID">
-</a>
-
-<a href="https://www.scopus.com/authid/detail.uri?authorId=58616861700"
-   target="_blank"
-   title="Scopus Profile">
-
-    <img src="images/scopus-logo.png"
-         alt="Scopus">
-</a>
-
-<a href="https://scholar.google.com/citations?user=Dj0n1QwAAAAJ&hl=en&oi=ao"
-   target="_blank"
-   title="Google Scholar Profile">
-
-    <img src="images/gs-logo.png"
-         alt="Google Scholar">
-</a>
-
-</div>
-
+    <h1>PUBLICATIONS</h1>
+    <div class="header-icons">
+        <a href="https://orcid.org/0000-0001-5043-7321"
+           target="_blank"
+           title="ORCID Profile">
+            <img src="images/orcid-logo.png" alt="ORCID">
+        </a>
+    </div>
 </header>
 
 <nav>
-
-<a href="index.html">← Back to Profile</a>
-
+    <a href="index.html">← Back to Profile</a>
 </nav>
 
 <div class="container">
@@ -425,18 +419,18 @@ Visit my publication profile, here!
 
                         <p style="margin-top: 1.5rem; font-weight: 600; color: #12314e;">Index Matrices</p>
                         <div class="metrics-container">
-                            <div class="metric-card">
+                            <a href="https://scholar.google.com/citations?user=Dj0n1QwAAAAJ&hl=en&oi=ao" target="_blank" class="metric-card">
                                 <h3>GoogleScholar (H-index)</h3>
                                 <p>3</p>
-                            </div>
-                            <div class="metric-card">
+                            </a>
+                            <a href="https://www.webofscience.com/wos/author/record/AHC-8278-2022" target="_blank" class="metric-card">
                                 <h3>WOS (Impact Factor)</h3>
                                 <p>1</p>
-                            </div>
-                            <div class="metric-card">
+                            </a>
+                            <a href="https://www.scopus.com/authid/detail.uri?authorId=58616861700" target="_blank" class="metric-card">
                                 <h3>Scopus (H-index)</h3>
                                 <p>2</p>
-                            </div>
+                            </a>
                         </div>
 
                         <div class="last-update">
@@ -495,7 +489,7 @@ Loading publications...
 
 <footer>
 
-© 2026 Ir. Ardhymanto Am Tanjung, PhD
+© 2026 Ardhymanto Am Tanjung
 
 </footer>
 
