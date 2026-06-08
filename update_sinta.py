@@ -37,23 +37,58 @@ except ImportError:
 SINTA_ID = 6775330
 IPR_URL_TEMPLATE = 'https://sinta.kemdiktisaintek.go.id/authors/profile/{}/?view=iprs'
 
+import time
+
 def fetch_sinta_data(author_id):
-    """Fetch author data from SINTA"""
-    try:
-        print(f"Fetching SINTA data for author ID: {author_id}...")
-        author_data = sinta.author(author_id)
-        
-        # Handle case where sinta.author() returns a list
-        if isinstance(author_data, list):
-            if len(author_data) == 0:
-                print("Error: No author data returned from SINTA")
+    """Fetch author data from SINTA with retries and better diagnostics"""
+    max_retries = 3
+    retry_delay = 2
+    
+    for attempt in range(max_retries):
+        try:
+            print(f"Fetching SINTA data for author ID: {author_id}... (Attempt {attempt + 1}/{max_retries})")
+            
+            # Add explicit timeout and headers
+            author_data = sinta.author(author_id)
+            
+            # Debug: Print what we received
+            print(f"DEBUG: Received data type: {type(author_data)}")
+            print(f"DEBUG: Received data: {author_data}")
+            
+            # Handle case where sinta.author() returns a list
+            if isinstance(author_data, list):
+                if len(author_data) == 0:
+                    print("Warning: Empty list returned from SINTA")
+                    if attempt < max_retries - 1:
+                        print(f"Retrying in {retry_delay}s...")
+                        time.sleep(retry_delay)
+                        continue
+                    else:
+                        print("Error: No author data returned from SINTA after all retries")
+                        sys.exit(1)
+                author_data = author_data[0]
+            
+            if not author_data:
+                print("Warning: None/empty data returned from SINTA")
+                if attempt < max_retries - 1:
+                    print(f"Retrying in {retry_delay}s...")
+                    time.sleep(retry_delay)
+                    continue
+                else:
+                    print("Error: No author data returned from SINTA after all retries")
+                    sys.exit(1)
+            
+            print("✓ Successfully fetched SINTA data")
+            return author_data
+            
+        except Exception as e:
+            print(f"Error fetching SINTA data on attempt {attempt + 1}: {type(e).__name__}: {e}")
+            if attempt < max_retries - 1:
+                print(f"Retrying in {retry_delay}s...")
+                time.sleep(retry_delay)
+            else:
+                print("Error: Failed to fetch SINTA data after all retries")
                 sys.exit(1)
-            author_data = author_data[0]
-        
-        return author_data
-    except Exception as e:
-        print(f"Error fetching SINTA data: {e}")
-        sys.exit(1)
 
 def generate_profile_card(data):
     """Generate the SINTA profile card HTML"""
